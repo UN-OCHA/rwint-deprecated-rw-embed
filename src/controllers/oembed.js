@@ -1,15 +1,17 @@
-var Joi = require('joi');
+'use strict';
+
+var Joi = require('joi'),
+    path = require('path');
 
 module.exports = {
     list: {
-        handler: function(request, reply){
+        handler: function(request, reply) {
             var settings = require('../bootstrap/settings');
-            var data = {};
             for (var key in settings.widgets) {
-                settings.widgets[key].href = request.server.info.uri + request.path + '/' + key;
+                settings.widgets[key].href = request.server.info.uri + path.join(request.path, key);
             }
             var json = {
-                _links: { self: { href: request.server.info.uri + request.url.href }},
+                _links: { self: { href: request.server.info.uri + request.url.href } },
                 data: settings.widgets
             };
             reply(json).type('application/hal+json');
@@ -19,16 +21,18 @@ module.exports = {
         }
     },
     widget: {
-        handler: function(request, reply){
+        handler: function(request, reply) {
             var query = request.query;
+            var height = request.query.maxheight;
+            var width = request.query.maxwidth;
             delete query.maxheight;
             delete query.maxwidth;
 
             var json = {
-                title: "Not a Real oEmbed Response",
-                widget: request.server.info.uri + '/v0/widget/' + request.params.type,
-                height: request.query.maxheight || 0,
-                width: request.query.maxwidth || 0,
+                title: 'Not a Real oEmbed Response',
+                widget: request.server.info.uri + path.join('v0/widget', request.params.type),
+                height: height,
+                width: width,
                 src: query
             };
             reply(json);
@@ -36,8 +40,8 @@ module.exports = {
         validate: {
             query: {
                 url: Joi.required(),
-                maxwidth: Joi.number().integer().min(1).default(300),
-                maxheight: Joi.number().integer().min(1).default(300),
+                maxwidth: Joi.number().integer().min(1).default(800),
+                maxheight: Joi.number().integer().min(1).default(800),
                 // Apparently no way to blanket allow parameters.
                 limit: Joi.optional(),
                 offset: Joi.optional(),
@@ -54,4 +58,4 @@ module.exports = {
             name: 'widget'
         }
     }
-}
+};

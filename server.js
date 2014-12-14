@@ -1,3 +1,5 @@
+'use strict';
+
 var Hapi = require('hapi')
   , config = require('./src/bootstrap/settings')
   ;

@@ -7,7 +7,6 @@
   },
   "main": "server.js",
   "scripts": {
-    "test": "make test",
     "start": "node server.js"
   },
   "keywords": [
@@ -22,6 +21,8 @@
     "code": "^1.2.1",
     "eslint": "^0.10.0",
     "grunt": "^0.4.5",
+    "grunt-eslint": "^2.1.0",
+    "grunt-lab": "^2.1.2",
     "lab": "^5.1.0"
   },
   "dependencies": {

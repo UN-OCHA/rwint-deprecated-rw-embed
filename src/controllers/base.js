@@ -1,3 +1,5 @@
+'use strict';
+
 // This is the base controller. Used for base routes, such as the default index/root path, 404 error pages, and others.
 module.exports = {
     index: {
@@ -8,11 +10,11 @@ module.exports = {
                 },
                 data: {
                     oembed: {
-                        title: "oEmbed Services",
+                        title: 'oEmbed Services',
                         href: request.server.info.uri + '/v0/oembed'
                     }
                 }
-            }
+            };
             reply(json).type('application/hal+json');
         },
         app: {
@@ -27,11 +29,11 @@ module.exports = {
                 },
                 data: {
                     oembed: {
-                        title: "oEmbed Services",
+                        title: 'oEmbed Services',
                         href: request.server.info.uri + '/v0/oembed'
                     }
                 }
-            }
+            };
             reply(json).type('application/hal+json');
         },
         app: {
@@ -46,5 +48,4 @@ module.exports = {
             name: '404'
         }
     }
-}
-
+};
