@@ -5,6 +5,7 @@ var Joi = require('joi'),
 
 module.exports = {
     list: {
+        description: 'List all available oembed widgets',
         handler: function(request, reply) {
             var settings = require('../bootstrap/settings');
             for (var key in settings.widgets) {
@@ -21,6 +22,7 @@ module.exports = {
         }
     },
     widget: {
+        description: 'Generate the oembed response for the requested widget type.',
         handler: function(request, reply) {
             var query = request.query;
             var height = request.query.maxheight;

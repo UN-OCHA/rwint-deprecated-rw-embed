@@ -3,6 +3,7 @@
 // This is the base controller. Used for base routes, such as the default index/root path, 404 error pages, and others.
 module.exports = {
     index: {
+        description: 'Root resource of the Embed service.',
         handler: function(request, reply){
             var json = {
                 _links: {
@@ -22,6 +23,7 @@ module.exports = {
         }
     },
     v0: {
+        description: 'General version 0 root resource.',
         handler: function(request, reply){
             var json = {
                 _links: {
@@ -41,6 +43,7 @@ module.exports = {
         }
     },
     missing: {
+        description: '404/Not Found response',
         handler: function(request, reply){
             reply('404').code(404);
         },

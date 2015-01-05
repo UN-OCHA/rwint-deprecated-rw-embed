@@ -24,6 +24,9 @@ server.pack.register([
     },
     {
         plugin: require('hapi-named-routes')
+    },
+    {
+        plugin: require('blipp')
     }
 ], function(err) {
     if (err) {
