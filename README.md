@@ -6,6 +6,7 @@ in a variety of visualizations.
 ## Installation
 
 * Install node.
+* `npm install nodemon -g`
 * `git clone https://github.com/reliefweb/rw-crisis.git`
 * `npm install`
 

@@ -10,7 +10,8 @@ var goodOptions = {
     reporters: [{
         reporter: require('good-console'),
         args: [{ log: '*', request: '*', error: '*' }]
-    }, {
+    },
+    {
         reporter: require('good-file'),
         args: [ './system.log', { log: '*', request: '*', ops: '*', error: '*' }]
     }]
