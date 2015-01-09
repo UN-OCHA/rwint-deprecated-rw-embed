@@ -13,7 +13,7 @@ var goodOptions = {
     },
     {
         reporter: require('good-file'),
-        args: [ './system.log', { log: '*', request: '*', ops: '*', error: '*' }]
+        args: [ './rw-embed.log', { log: '*', request: '*', ops: '*', error: '*' }]
     }]
 };
 
