@@ -4,7 +4,7 @@ var Hapi = require('hapi')
   , config = require('./src/bootstrap/settings')
   ;
 
-var server = Hapi.createServer('0.0.0.0', config.port);
+var server = Hapi.createServer('0.0.0.0', config.port, { cors: true });
 
 // Setup the views engine and folder
 server.views({
