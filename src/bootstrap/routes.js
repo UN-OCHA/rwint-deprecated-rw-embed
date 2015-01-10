@@ -26,6 +26,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/v0/widgets',
+        config: controller.widgets.list
+    },
+    {
+        method: 'GET',
+        path: '/v0/widgets/{type}',
+        config: controller.widgets.widget
+    },
+    {
+        method: 'GET',
         path: '/',
         config: controller.base.index
     },

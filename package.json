@@ -37,6 +37,7 @@
     "hapi": "^7.5.2",
     "hapi-named-routes": "^0.2.0",
     "joi": "^5.0.2",
+    "reliefweb-widgets": "git+ssh://git@github.com:reliefweb/rw-widget.js.git#130709ab3f37bf0d151df0eef2923ec7b5780f24",
     "require-directory": "^2.0.0",
     "swig": "^1.4.2"
   }
