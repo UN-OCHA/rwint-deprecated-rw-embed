@@ -1,16 +1,17 @@
 'use strict';
 
 var Joi = require('joi');
+var rw = require('reliefweb-widgets/src/reliefweb-widgets');
+var rwRegistry = rw.listWidgets();
 
 module.exports = {
     list: {
         description: 'List all available ReliefWeb widgets',
         handler: function(request, reply) {
-            var rw = require('reliefweb-widgets/src/reliefweb-widgets');
             var hypermedia = require('../util/hypermedia')(request.server.info.uri);
 
             var widgets = {};
-            rw().listWidgets().forEach(function(item) {
+            rwRegistry.forEach(function(item) {
                 widgets[item] = hypermedia.link(item, request.url.href, { title: item });
             });
 
@@ -36,7 +37,7 @@ module.exports = {
         },
         validate: {
             params: {
-              type: Joi.valid(require('reliefweb-widgets/src/reliefweb-widgets')().listWidgets())
+              type: Joi.valid(rwRegistry)
             }
         }
     }
