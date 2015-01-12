@@ -4,6 +4,6 @@ embed:
     DNSDOCK_NAME: embed
     DNSDOCK_IMAGE: embed
   volumes:
-    - nodejs/root/opt/:/opt/
-    - .:/var/www/html
+    - /code/rw-embed/nodejs/root/opt/:/opt/
+    - /code/rw-embed:/var/www/html
   hostname: embed.vm
