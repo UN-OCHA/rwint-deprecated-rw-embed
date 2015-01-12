@@ -1,0 +1,9 @@
+embed:
+  image: unocha/nodejs
+  environment:
+    DNSDOCK_NAME: embed
+    DNSDOCK_IMAGE: embed
+  volumes:
+    - nodejs/root/opt/:/opt/
+    - .:/var/www/html
+  hostname: embed.vm
