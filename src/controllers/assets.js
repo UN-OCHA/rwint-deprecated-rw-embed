@@ -16,7 +16,7 @@ module.exports = {
     widgetLibrary: {
         description: 'rw-widgets.js library',
         handler: {
-            file: 'node_modules/reliefweb-widgets/dist/reliefweb-widgets.js'
+            file: 'node_modules/rw-widgets/dist/reliefweb-widgets.js'
         },
         app: {
             name: 'widgetLibrary'

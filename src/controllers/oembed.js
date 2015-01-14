@@ -1,7 +1,7 @@
 'use strict';
 
 var Joi = require('joi');
-var rw = require('reliefweb-widgets/src/reliefweb-widgets');
+var rw = require('rw-widgets/src/reliefweb-widgets');
 var rwRegistry = rw.listWidgets();
 
 module.exports = {
