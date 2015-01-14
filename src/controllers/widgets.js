@@ -29,7 +29,7 @@ module.exports = {
         description: 'Relay the core widget content from reliefweb-widgets.js',
         handler: {
             directory: {
-                path: 'node_modules/reliefweb-widgets/example',
+                path: 'src/templates',
                 // defaultExtension is a fallback. For greater performance we should
                 // hard-wire the html extension if that's our standard.
                 defaultExtension: 'html'

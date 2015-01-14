@@ -36,6 +36,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/assets/{path*}',
+        config: controller.assets.asset
+    },
+    {
+        method: 'GET',
+        path: '/assets/reliefweb-widgets.js',
+        config: controller.assets.widgetLibrary
+    },
+    {
+        method: 'GET',
         path: '/',
         config: controller.base.index
     },
