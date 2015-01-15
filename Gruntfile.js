@@ -32,15 +32,15 @@ module.exports = function (grunt) {
         wiredep: {
             build: {
                 src: "src/templates/*.html",
-                cwd: "node_modules/reliefweb-widgets",
-                ignorePath: /.*(bower_components|dist)\//,
+                cwd: "node_modules/rw-widgets",
+                ignorePath: /.*node_modules\/rw-widgets/,
                 includeSelf: true
             }
         }
     });
 
     var version = require('./package.json').version;
-    grunt.config('wiredep.build.fileTypes.html.replace.js', '<script src="/assets/{{filePath}}?' + version + '"></script>');
+    grunt.config('wiredep.build.fileTypes.html.replace.js', '<script src="{{filePath}}?' + version + '"></script>');
 
     // Register tasks
     grunt.registerTask("default", [ "eslint", "lab", "wiredep" ]);

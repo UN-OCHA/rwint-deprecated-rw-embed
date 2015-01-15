@@ -2,15 +2,15 @@
 
 // This is the base controller. Used for base routes, such as the default index/root path, 404 error pages, and others.
 module.exports = {
-    asset: {
+    bower: {
         description: 'Frontend library assets.',
         handler: {
             directory: {
-                path: 'node_modules/reliefweb-widgets/bower_components',
+                path: 'node_modules/rw-widgets/bower_components'
             }
         },
         app: {
-            name: 'asset'
+            name: 'bower'
         }
     },
     widgetLibrary: {

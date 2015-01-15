@@ -4,12 +4,12 @@
     <title>Crisis Overview</title>
     <meta http-equiv="content-type" content="text/html; charset=UTF8">
     <!-- bower:js -->
-    <script src="/assets/lodash.compat.js?0.1.0"></script>
-    <script src="/assets/handlebars/handlebars.js?0.1.0"></script>
-    <script src="/assets/d3/d3.js?0.1.0"></script>
-    <script src="/assets/moment/moment.js?0.1.0"></script>
-    <script src="/assets/superagent/superagent.js?0.1.0"></script>
-    <script src="/assets/reliefweb-widgets.js?0.1.0"></script>
+    <script src="/bower_components/lodash/dist/lodash.compat.min.js?0.1.0"></script>
+    <script src="/bower_components/handlebars/handlebars.js?0.1.0"></script>
+    <script src="/bower_components/d3/d3.js?0.1.0"></script>
+    <script src="/bower_components/moment/moment.js?0.1.0"></script>
+    <script src="/bower_components/superagent/superagent.js?0.1.0"></script>
+    <script src="/dist/reliefweb-widgets.js?0.1.0"></script>
     <!-- endbower -->
     <!-- widget assets -->
     <script id="crisis-overview-template" type="text/x-handlebars-template">
@@ -26,6 +26,7 @@
         template: '#crisis-overview-template',
         map: {
           src: "http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Soho_-_map_1.png/1024px-Soho_-_map_1.png"
+          alt: "Map of Soho"
         }
       });
       widget.render('#widget');

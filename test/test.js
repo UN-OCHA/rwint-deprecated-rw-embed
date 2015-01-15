@@ -108,5 +108,25 @@ describe('Widget resources', function() {
             done();
         });
     });
+    it('has working paths to bower_components', function(done) {
+        var options = {
+            method: "GET",
+            url: "/bower_components/handlebars/handlebars.js"
+        };
+        Server.inject(options, function(response) {
+            expect(response.statusCode).to.equal(200);
+            done();
+        });
+    });
+    it('can load the reliefweb-widgets.js library', function(done) {
+        var options = {
+            method: "GET",
+            url: "/dist/reliefweb-widgets.js"
+        };
+        Server.inject(options, function(response) {
+            expect(response.statusCode).to.equal(200);
+            done();
+        });
+    });
 });
 

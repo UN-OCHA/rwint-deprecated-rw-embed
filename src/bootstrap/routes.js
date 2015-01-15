@@ -36,12 +36,12 @@ module.exports = [
     },
     {
         method: 'GET',
-        path: '/assets/{path*}',
-        config: controller.assets.asset
+        path: '/bower_components/{path*}',
+        config: controller.assets.bower
     },
     {
         method: 'GET',
-        path: '/assets/reliefweb-widgets.js',
+        path: '/dist/reliefweb-widgets.js',
         config: controller.assets.widgetLibrary
     },
     {
