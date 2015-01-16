@@ -24,7 +24,10 @@
     "grunt-contrib-watch": "^0.6.1",
     "grunt-eslint": "^2.1.0",
     "grunt-lab": "^2.1.2",
-    "lab": "^5.1.0"
+    "grunt-wiredep": "^2.0.0",
+    "lab": "^5.1.0",
+    "load-grunt-tasks": "^2.0.0",
+    "time-grunt": "^1.0.0"
   },
   "dependencies": {
     "blipp": "^1.1.0",
@@ -37,6 +40,7 @@
     "hapi": "^7.5.2",
     "hapi-named-routes": "^0.2.0",
     "joi": "^5.0.2",
+    "reliefweb-widgets": "git+ssh://git@github.com:reliefweb/rw-widget.js.git#914685c",
     "require-directory": "^2.0.0",
     "swig": "^1.4.2"
   }

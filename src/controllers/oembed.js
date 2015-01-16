@@ -1,19 +1,23 @@
 'use strict';
 
-var Joi = require('joi'),
-    path = require('path');
+var Joi = require('joi');
+var rw = require('rw-widgets/src/reliefweb-widgets');
+var rwRegistry = rw.listWidgets();
 
 module.exports = {
     list: {
         description: 'List all available oembed widgets',
         handler: function(request, reply) {
-            var settings = require('../bootstrap/settings');
-            for (var key in settings.widgets) {
-                settings.widgets[key].href = request.server.info.uri + path.join(request.path, key);
-            }
+            var hypermedia = require('../util/hypermedia')(request.server.info.uri);
+
+            var widgets = {};
+            rwRegistry.forEach(function(item) {
+                widgets[item] = hypermedia.link(item, request.url.href, { title: item });
+            } );
+
             var json = {
-                _links: { self: { href: request.server.info.uri + request.url.href } },
-                data: settings.widgets
+                _links: { self: hypermedia.link(request.url.href) },
+                data: widgets
             };
             reply(json).type('application/hal+json');
         },
@@ -24,6 +28,7 @@ module.exports = {
     widget: {
         description: 'Generate the oembed response for the requested widget type.',
         handler: function(request, reply) {
+            var hypermedia = require('../util/hypermedia')(request.server.info.uri);
             var query = request.query;
             var height = request.query.maxheight;
             var width = request.query.maxwidth;
@@ -32,7 +37,7 @@ module.exports = {
 
             var json = {
                 title: 'Not a Real oEmbed Response',
-                widget: request.server.info.uri + path.join('v0/widget', request.params.type),
+                widget: hypermedia.uri(request.params.type, 'v0/widget'),
                 height: height,
                 width: width,
                 src: query
@@ -54,6 +59,9 @@ module.exports = {
                 query: Joi.optional(),
                 sort: Joi.optional(),
                 fields: Joi.optional()
+            },
+            params: {
+                type: Joi.valid(rwRegistry)
             }
         },
         app: {

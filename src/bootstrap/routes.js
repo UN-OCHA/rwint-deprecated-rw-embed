@@ -26,6 +26,26 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/v0/widgets',
+        config: controller.widgets.list
+    },
+    {
+        method: 'GET',
+        path: '/v0/widgets/{type}',
+        config: controller.widgets.widget
+    },
+    {
+        method: 'GET',
+        path: '/bower_components/{path*}',
+        config: controller.assets.bower
+    },
+    {
+        method: 'GET',
+        path: '/dist/reliefweb-widgets.js',
+        config: controller.assets.widgetLibrary
+    },
+    {
+        method: 'GET',
         path: '/',
         config: controller.base.index
     },

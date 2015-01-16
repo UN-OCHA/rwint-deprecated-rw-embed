@@ -1,25 +1,24 @@
 "use strict";
 
 module.exports = function (grunt) {
+    require('time-grunt')(grunt);
 
     // Load plugins
-    grunt.loadNpmTasks('grunt-eslint');
-    grunt.loadNpmTasks('grunt-lab');
-    grunt.loadNpmTasks('grunt-contrib-watch');
+    require('load-grunt-tasks')(grunt, {pattern: ['grunt-*']});
 
     // Configure plugins
     grunt.initConfig({
         lab : {
             color       : true,
             coverage    : true,
-            minCoverage : 98,
+            minCoverage : 90,
             verbose     : true
         },
         eslint: {
             options: {
                 config: '.eslint'
             },
-            target: [ "src/**" ]
+            target: [ "src/**/*.js" ]
         },
         watch: {
             code: {
@@ -29,10 +28,21 @@ module.exports = function (grunt) {
                   spawn: false
                 }
             }
+        },
+        wiredep: {
+            build: {
+                src: "src/templates/*.html",
+                cwd: "node_modules/rw-widgets",
+                ignorePath: /.*node_modules\/rw-widgets/,
+                includeSelf: true
+            }
         }
     });
 
+    var version = require('./package.json').version;
+    grunt.config('wiredep.build.fileTypes.html.replace.js', '<script src="{{filePath}}?' + version + '"></script>');
+
     // Register tasks
-    grunt.registerTask("default", [ "eslint", "lab" ]);
+    grunt.registerTask("default", [ "eslint", "lab", "wiredep" ]);
 
 };
