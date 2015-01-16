@@ -7,7 +7,7 @@ ReliefWeb content in a variety of visualizations.
 
 * Install node.
 * `npm install nodemon -g`
-* `git clone https://github.com/reliefweb/rw-crisis.git`
+* `git clone https://github.com/reliefweb/rw-embed.git`
 * `npm install`
 * `cd node_modules/rw-widgets && bower install --production && cd -`
 * `grunt`
