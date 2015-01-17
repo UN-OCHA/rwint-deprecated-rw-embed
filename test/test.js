@@ -69,8 +69,8 @@ describe('oEmbed implementation', function () {
             url: "/v0/oembed/image?url=placeholder"
         };
         Server.inject(options, function(response) {
-            expect(response.result.height).to.equal(800);
-            expect(response.result.width).to.equal(800);
+            expect(response.result.height).to.equal(600);
+            expect(response.result.width).to.equal(600);
             done();
         });
     });
@@ -89,6 +89,19 @@ describe('oEmbed implementation', function () {
         var options = {
             method: "GET",
             url: "/v0/oembed/nat?url=placeholder&maxheight=10&maxwidth=20"
+        };
+        Server.inject(options, function(response) {
+            expect(response.statusCode).to.equal(400);
+            done();
+        });
+    });
+});
+
+describe('iFrame resources', function() {
+    it('must be of a valid type', function(done) {
+        var options = {
+            method: "GET",
+            url: "/v0/iframe/nat?url=placeholder&maxheight=10&maxwidth=20"
         };
         Server.inject(options, function(response) {
             expect(response.statusCode).to.equal(400);

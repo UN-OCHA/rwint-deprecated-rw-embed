@@ -1,24 +1,13 @@
 'use strict';
 
-var Joi = require('joi');
-var rw = require('rw-widgets/src/reliefweb-widgets');
-var rwRegistry = rw.listWidgets();
+var Joi = require('joi'),
+    W = require('../util/common');
 
 module.exports = {
     list: {
         description: 'List all available ReliefWeb widgets',
         handler: function(request, reply) {
-            var hypermedia = require('../util/hypermedia')(request.server.info.uri);
-
-            var widgets = {};
-            rwRegistry.forEach(function(item) {
-                widgets[item] = hypermedia.link(item, request.url.href, { title: item });
-            });
-
-            var json = {
-                _links: { self: hypermedia.link(request.url.href) },
-                data: widgets
-            };
+            var json = W.listWidgets(request.server.info.uri, request.url.href);
             reply(json).type('application/hal+json');
         },
         app: {
@@ -37,7 +26,7 @@ module.exports = {
         },
         validate: {
             params: {
-              type: Joi.valid(rwRegistry)
+              type: Joi.valid(W.registry)
             }
         }
     }

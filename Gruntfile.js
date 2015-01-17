@@ -43,6 +43,6 @@ module.exports = function (grunt) {
     grunt.config('wiredep.build.fileTypes.html.replace.js', '<script src="{{filePath}}?' + version + '"></script>');
 
     // Register tasks
-    grunt.registerTask("default", [ "eslint", "lab", "wiredep" ]);
+    grunt.registerTask("default", [ "eslint", "wiredep", "lab" ]);
 
 };

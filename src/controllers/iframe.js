@@ -5,7 +5,7 @@ var Joi = require('joi'),
 
 module.exports = {
     list: {
-        description: 'List all available oembed widgets',
+        description: 'List all available iframe widgets',
         handler: function(request, reply) {
             var json = W.listWidgets(request.server.info.uri, request.url.href);
             reply(json).type('application/hal+json');
@@ -15,31 +15,16 @@ module.exports = {
         }
     },
     widget: {
-        description: 'Generate the oembed response for the requested widget type.',
+        description: 'Generate the iframe response for the requested widget type.',
         handler: function(request, reply) {
             var hypermedia = require('../util/hypermedia')(request.server.info.uri);
-            var height = request.query.maxheight;
-            var width = request.query.maxwidth;
-
             var html = '<iframe src="' + hypermedia.uri('/v0/widgets')
-                + '/' + request.params.type + '" width="' + height
-                + '" height="' + width + '"></iframe>';
-
-            var json = {
-                type: 'rich',
-                version: '1.0',
-                title: W.title(request.params.type),
-                author_name: 'ReliefWeb',
-                author_url: 'http://reliefweb.int',
-                html: html,
-                height: height,
-                width: width
-            };
-            reply(json);
+                + '/' + request.params.type + '" width="' + request.query.maxwidth
+                + '" height="' + request.query.maxheight + '"></iframe>';
+            reply(html);
         },
         validate: {
             query: {
-                url: Joi.required(),
                 maxwidth: Joi.number().integer().min(1).default(600),
                 maxheight: Joi.number().integer().min(1).default(600),
                 // Apparently no way to blanket allow parameters.
