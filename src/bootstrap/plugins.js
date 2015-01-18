@@ -27,6 +27,9 @@ server.pack.register([
     },
     {
         plugin: require('blipp')
+    },
+    {
+        plugin: require('../plugins/oembed')
     }
 ], function(err) {
     if (err) {

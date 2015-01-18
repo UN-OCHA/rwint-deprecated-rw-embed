@@ -16,26 +16,21 @@ module.exports = {
     },
     widget: {
         description: 'Generate the oembed response for the requested widget type.',
-        handler: function(request, reply) {
-            var hypermedia = require('../util/hypermedia')(request.server.info.uri);
-            var height = request.query.maxheight;
-            var width = request.query.maxwidth;
-
-            var html = '<iframe src="' + hypermedia.uri('/v0/widgets')
-                + '/' + request.params.type + '" width="' + height
-                + '" height="' + width + '"></iframe>';
-
-            var json = {
+        handler: {
+            oembed: {
                 type: 'rich',
-                version: '1.0',
-                title: W.title(request.params.type),
+                html: function(options, request) {
+                    var hypermedia = require('../util/hypermedia')(request.server.info.uri);
+                    return '<iframe src="' + hypermedia.uri('/v0/widgets')
+                        + '/' + request.params.type + '" width="' + options.height
+                        + '" height="' + options.width + '"></iframe>';
+                },
+                title: function(options, request) {
+                    return W.title(request.params.type);
+                },
                 author_name: 'ReliefWeb',
-                author_url: 'http://reliefweb.int',
-                html: html,
-                height: height,
-                width: width
-            };
-            reply(json);
+                author_url: 'http://reliefweb.int'
+            }
         },
         validate: {
             query: {

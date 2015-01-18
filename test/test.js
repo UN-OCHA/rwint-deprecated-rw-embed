@@ -74,14 +74,23 @@ describe('oEmbed implementation', function () {
             done();
         });
     });
-    it('overrides the maxheight and maxwidth from querystring', function(done) {
+    it('limits height to maxheight', function(done) {
         var options = {
             method: "GET",
-            url: "/v0/oembed/image?url=placeholder&maxheight=10&maxwidth=20"
+            url: "/v0/oembed/image?url=placeholder&maxheight=10"
         };
         Server.inject(options, function(response) {
             expect(response.result.height).to.equal(10);
-            expect(response.result.width).to.equal(20);
+            done();
+        });
+    });
+    it('limits width to maxwidth', function(done) {
+        var options = {
+            method: "GET",
+            url: "/v0/oembed/image?url=placeholder&maxwidth=10"
+        };
+        Server.inject(options, function(response) {
+            expect(response.result.width).to.equal(10);
             done();
         });
     });
