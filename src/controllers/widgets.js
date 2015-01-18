@@ -1,7 +1,7 @@
 'use strict';
 
 var Joi = require('joi'),
-    W = require('../util/common');
+    W = require('../util/registry');
 
 module.exports = {
     list: {
