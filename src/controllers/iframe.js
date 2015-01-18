@@ -17,11 +17,7 @@ module.exports = {
     widget: {
         description: 'Generate the iframe response for the requested widget type.',
         handler: function(request, reply) {
-            var hypermedia = require('../util/hypermedia')(request.server.info.uri);
-            var html = '<iframe src="' + hypermedia.uri('/v0/widgets')
-                + '/' + request.params.type + '" width="' + request.query.maxwidth
-                + '" height="' + request.query.maxheight + '"></iframe>';
-            reply(html);
+            reply(require('../util/common').iframe(request, request.query.maxheight, request.query.maxwidth));
         },
         validate: {
             query: {

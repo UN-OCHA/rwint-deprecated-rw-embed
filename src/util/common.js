@@ -1,0 +1,16 @@
+'use strict';
+
+module.exports = {
+    iframe: function(request, height, width) {
+        var query = request.query;
+        query.config = query.url;
+        delete query.url;
+        delete query.maxheight;
+        delete query.maxwidth;
+
+        var hypermedia = require('./hypermedia')(request.server.info.uri);
+        var url = hypermedia.uri(request.params.type, '/v0/widgets', query);
+        console.log(url);
+        return '<iframe src="' + url + '" width="' + width + '" height="' + height + '"></iframe>';
+    }
+};

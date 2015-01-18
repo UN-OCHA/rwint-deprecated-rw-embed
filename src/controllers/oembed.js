@@ -20,10 +20,7 @@ module.exports = {
             oembed: {
                 type: 'rich',
                 html: function(options, request) {
-                    var hypermedia = require('../util/hypermedia')(request.server.info.uri);
-                    return '<iframe src="' + hypermedia.uri('/v0/widgets')
-                        + '/' + request.params.type + '" width="' + options.height
-                        + '" height="' + options.width + '"></iframe>';
+                    return require('../util/common').iframe(request, options.height, options.width);
                 },
                 title: function(options, request) {
                     return W.title(request.params.type);
