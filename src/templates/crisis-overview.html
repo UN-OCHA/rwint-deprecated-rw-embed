@@ -8,6 +8,7 @@
     <script src="/bower_components/handlebars/handlebars.js?0.1.0"></script>
     <script src="/bower_components/d3/d3.js?0.1.0"></script>
     <script src="/bower_components/moment/moment.js?0.1.0"></script>
+    <script src="/bower_components/eq.js/build/eq.js?0.1.0"></script>
     <script src="/bower_components/superagent/superagent.js?0.1.0"></script>
     <script src="/bower_components/eq.js/dist/eq.min.js?0.1.0"></script>
     <script src="/dist/reliefweb-widgets.js?0.1.0"></script>
@@ -57,14 +58,30 @@
   <body>
     <div id="widget" class="widget"></div>
     <script type="text/javascript">
+      function getQueryParams(qs) {
+        qs = qs.split("+").join(" ");
+
+        var params = {}, tokens,
+            re = /[?&]?([^=]+)=([^&]*)/g;
+
+        while (tokens = re.exec(qs)) {
+          params[decodeURIComponent(tokens[1])]
+              = decodeURIComponent(tokens[2]);
+        }
+
+        return params;
+      }
+
+      var params = getQueryParams(document.location.search);
+
       var widget = ReliefwebWidgets.widget('crisis-overview', {
         template: '#crisis-overview-template',
-        map: {
-          src: "http://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Soho_-_map_1.png/1024px-Soho_-_map_1.png",
-          alt: "Map of Soho"
-        }
+        configFile: params.config
       });
       widget.render('#widget');
     </script>
+    <!-- Typekit -->
+    <script src="//use.typekit.net/pqs1mrp.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
   </body>
 </html>
