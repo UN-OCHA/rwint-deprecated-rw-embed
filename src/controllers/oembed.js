@@ -28,8 +28,8 @@ module.exports = {
                 title: function(options, request) {
                     return W.title(request.params.type);
                 },
-                author_name: 'ReliefWeb',
-                author_url: 'http://reliefweb.int'
+                provider_name: 'ReliefWeb',
+                provider_url: 'http://reliefweb.int'
             }
         },
         validate: {
