@@ -7,7 +7,8 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "postinstall": "cd node_modules/rw-widgets && bower install --production && cd -"
   },
   "keywords": [
     "widget",
