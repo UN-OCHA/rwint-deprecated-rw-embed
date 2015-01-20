@@ -16,6 +16,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/v0/iframe',
+        config: controller.iframe.list
+    },
+    {
+        method: 'GET',
+        path: '/v0/iframe/{type}',
+        config: controller.iframe.widget
+    },
+    {
+        method: 'GET',
         path: '/v0/oembed',
         config: controller.oembed.list
     },

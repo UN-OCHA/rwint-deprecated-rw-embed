@@ -7,7 +7,8 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "postinstall": "cd node_modules/rw-widgets && bower install --production && cd -"
   },
   "keywords": [
     "widget",
@@ -40,7 +41,7 @@
     "hapi": "^7.5.2",
     "hapi-named-routes": "^0.2.0",
     "joi": "^5.0.2",
-    "reliefweb-widgets": "git+ssh://git@github.com:reliefweb/rw-widget.js.git#914685c",
+    "reliefweb-widgets": "git+ssh://git@github.com:reliefweb/rw-widget.js.git#2c51f11ad4242eb6e7a3fdb4797c4c4465ca9454",
     "require-directory": "^2.0.0",
     "swig": "^1.4.2"
   }

@@ -5,7 +5,7 @@ var Joi = require('joi'),
 
 module.exports = {
     list: {
-        description: 'List all available oembed widgets',
+        description: 'List all available iframe widgets',
         handler: function(request, reply) {
             var json = W.listWidgets(request.server.info.uri, request.url.href);
             reply(json).type('application/hal+json');
@@ -15,23 +15,12 @@ module.exports = {
         }
     },
     widget: {
-        description: 'Generate the oembed response for the requested widget type.',
-        handler: {
-            oembed: {
-                type: 'rich',
-                html: function(options, request) {
-                    return require('../util/common').iframe(request, options.height, options.width);
-                },
-                title: function(options, request) {
-                    return W.title(request.params.type);
-                },
-                provider_name: 'ReliefWeb',
-                provider_url: 'http://reliefweb.int'
-            }
+        description: 'Generate the iframe response for the requested widget type.',
+        handler: function(request, reply) {
+            reply(require('../util/common').iframe(request, request.query.maxheight, request.query.maxwidth));
         },
         validate: {
             query: {
-                url: Joi.required(),
                 maxwidth: Joi.number().integer().min(1).default(600),
                 maxheight: Joi.number().integer().min(1).default(600),
                 // Apparently no way to blanket allow parameters.
