@@ -6,7 +6,6 @@ ReliefWeb content in a variety of visualizations.
 ## Installation
 
 * Install node.
-* `npm install nodemon -g`
 * `git clone https://github.com/reliefweb/rw-embed.git`
 * `npm install`
 * `grunt`
