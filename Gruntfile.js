@@ -14,7 +14,7 @@ module.exports = function (grunt) {
         mkdir: {
            init: {
              options: {
-               create: [ 'dist' ]
+               create: [ 'dist', 'dist/widgets' ]
              }
            }
         },
@@ -25,7 +25,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'src/templates',
                 src: ['**'],
-                dest: 'dist'
+                dest: 'dist/widgets'
               }
             ]
           }
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
         },
         wiredep: {
             build: {
-                src: "dist/*.html",
+                src: "dist/widgets/*.html",
                 cwd: "node_modules/rw-widgets",
                 ignorePath: /.*node_modules\/rw-widgets/,
                 includeSelf: true
