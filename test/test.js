@@ -123,7 +123,7 @@ describe('Widget resources', function() {
     it('must be of a valid type', function(done) {
         var options = {
             method: "GET",
-            url: "/v0/oembed/nat?url=placeholder&maxheight=10&maxwidth=20"
+            url: "/v0/widgets/nat?url=placeholder&maxheight=10&maxwidth=20"
         };
         Server.inject(options, function(response) {
             expect(response.statusCode).to.equal(400);

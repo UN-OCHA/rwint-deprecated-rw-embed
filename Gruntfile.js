@@ -8,7 +8,29 @@ module.exports = function (grunt) {
 
     // Configure plugins
     grunt.initConfig({
-        lab : {
+        clean: {
+          dist: [ 'dist' ]
+        },
+        mkdir: {
+           init: {
+             options: {
+               create: [ 'dist' ]
+             }
+           }
+        },
+        copy: {
+          templates: {
+            files: [
+              {
+                expand: true,
+                cwd: 'src/templates',
+                src: ['**'],
+                dest: 'dist'
+              }
+            ]
+          }
+        },
+        lab: {
             color       : true,
             coverage    : true,
             minCoverage : 90,
@@ -31,7 +53,7 @@ module.exports = function (grunt) {
         },
         wiredep: {
             build: {
-                src: "src/templates/*.html",
+                src: "dist/*.html",
                 cwd: "node_modules/rw-widgets",
                 ignorePath: /.*node_modules\/rw-widgets/,
                 includeSelf: true
@@ -43,6 +65,6 @@ module.exports = function (grunt) {
     grunt.config('wiredep.build.fileTypes.html.replace.js', '<script src="{{filePath}}?' + version + '"></script>');
 
     // Register tasks
-    grunt.registerTask("default", [ "eslint", "wiredep", "lab" ]);
+    grunt.registerTask("default", [ 'eslint', 'clean', 'mkdir', 'copy', 'wiredep', 'lab' ]);
 
 };
