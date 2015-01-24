@@ -1,0 +1,12 @@
+embed:
+  image: unocha/nodejs
+  environment:
+    DNSDOCK_NAME: embed
+    DNSDOCK_IMAGE: embed
+  ports:
+    - "3000:3000"
+#  command: /var/www/html/nodejs/root/opt/node.sh
+  volumes:
+    - ./nodejs/root/opt:/opt
+    - .:/var/www/html
+  hostname: embed.vm
