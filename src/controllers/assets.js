@@ -21,5 +21,27 @@ module.exports = {
         app: {
             name: 'widgetLibrary'
         }
+    },
+    style: {
+        description: 'rw-widgets.js styles',
+        handler: {
+            directory: {
+                path: 'node_modules/rw-widgets/example/css'
+            }
+        },
+        app: {
+            name: 'widgetStyles'
+        }
+    },
+    image: {
+        description: 'rw-widgets.js images',
+        handler: {
+            directory: {
+                path: 'node_modules/rw-widgets/example/images'
+            }
+        },
+        app: {
+            name: 'widgetImages'
+        }
     }
 };
