@@ -51,6 +51,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/css/{path*}',
+        config: controller.assets.style
+    },
+    {
+        method: 'GET',
+        path: '/images/{path*}',
+        config: controller.assets.image
+    },
+    {
+        method: 'GET',
         path: '/dist/reliefweb-widgets.js',
         config: controller.assets.widgetLibrary
     },
