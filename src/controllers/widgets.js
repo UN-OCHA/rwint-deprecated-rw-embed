@@ -7,7 +7,7 @@ module.exports = {
     list: {
         description: 'List all available ReliefWeb widgets',
         handler: function(request, reply) {
-            var json = W.listWidgets(request.server.info.uri, request.url.href);
+            var json = W.listWidgets('http://' + request.info.host, request.url.href);
             reply(json).type('application/hal+json');
         },
         app: {

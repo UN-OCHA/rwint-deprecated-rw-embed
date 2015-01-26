@@ -5,14 +5,23 @@ module.exports = {
     index: {
         description: 'Root resource of the Embed service.',
         handler: function(request, reply){
+            var hypermedia = require('../util/hypermedia')('http://' + request.info.host);
             var json = {
                 _links: {
-                    self: { href: request.server.info.uri }
+                    self: { href: hypermedia.root }
                 },
                 data: {
                     oembed: {
-                        title: 'oEmbed Services',
-                        href: request.server.info.uri + '/v0/oembed'
+                        title: 'oEmbed Widgets',
+                        href: hypermedia.uri('/v0/oembed')
+                    },
+                    iframe: {
+                        title: "iFrame Widgets",
+                        href: hypermedia.uri('/v0/iframe')
+                    },
+                    widgets: {
+                        title: "HTML Widgets",
+                        href: hypermedia.uri('/v0/widgets')
                     }
                 }
             };
@@ -25,14 +34,23 @@ module.exports = {
     v0: {
         description: 'General version 0 root resource.',
         handler: function(request, reply){
+            var hypermedia = require('../util/hypermedia')('http://' + request.info.host);
             var json = {
                 _links: {
-                    self: { href: request.server.info.uri }
+                    self: { href: hypermedia.root }
                 },
                 data: {
                     oembed: {
-                        title: 'oEmbed Services',
-                        href: request.server.info.uri + '/v0/oembed'
+                        title: 'oEmbed Widgets',
+                        href: hypermedia.uri('/v0/oembed')
+                    },
+                    iframe: {
+                        title: "iFrame Widgets",
+                        href: hypermedia.uri('/v0/iframe')
+                    },
+                    widgets: {
+                        title: "HTML Widgets",
+                        href: hypermedia.uri('/v0/widgets')
                     }
                 }
             };

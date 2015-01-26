@@ -4,6 +4,7 @@ var QS = require('querystring');
 
 module.exports = function(baseUrl) {
 	return {
+        root: baseUrl,
 		uri: function(path, base, search) {
 			base = base === undefined ? '' : base + '/';
 			var url = baseUrl + base + path;
