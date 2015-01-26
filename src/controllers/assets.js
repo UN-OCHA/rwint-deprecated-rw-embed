@@ -44,4 +44,16 @@ module.exports = {
             name: 'widgetImages'
         }
     }
+,
+    font: {
+        description: 'rw-widgets.js fonts',
+        handler: {
+            directory: {
+                path: 'node_modules/rw-widgets/example/fonts'
+            }
+        },
+        app: {
+            name: 'widgetFonts'
+        }
+    }
 };

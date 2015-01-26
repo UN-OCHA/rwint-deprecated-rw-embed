@@ -61,6 +61,11 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/fonts/{path*}',
+        config: controller.assets.font
+    },
+    {
+        method: 'GET',
         path: '/dist/reliefweb-widgets.js',
         config: controller.assets.widgetLibrary
     },
