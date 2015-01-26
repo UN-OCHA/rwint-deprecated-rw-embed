@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Timeline</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF8">
+  <!-- bower:js -->
+  <!-- endbower -->
+  <!-- widget assets -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <script id="timeline-template" type="text/x-handlebars-template">
+    <div class="timeline-widget-wrapper">
+      <div class="timeline-widget">
+
+        <div class="timeline-widget--controls">
+          <button class="prev"><div class="arrow"></div></button>
+          <button class="next"><div class="arrow"></div></button>
+        </div><!-- .timeline-widget--controls -->
+
+        <div class="timeline-widget--dropdown">
+          <div class="timeline-widget--dropdown-heading">
+            <span class="un-icon-product_type_report"></span> Timeline - Calendar</div>
+          <div class="clear-both"></div>
+          <div class="timeline-widget--dropdown--wrapper">
+            <div class="timeline-widget--dropdown-controls">
+              <div class="form-select">
+                <select name="year">
+                </select>
+              </div>
+              <div class="form-select">
+                <select name="month"></select>
+              </div>
+              <span class="close"></span>
+            </div>
+            <div class="timeline-widget--dropdown--container">
+              <ul class="slidee">
+                {{#timeline-items}}
+                {{#new-month}}
+                <li class="timeline-widget--dropdown--month" data-isMonth="true">
+                  {{ date-month }} - {{ date-year }}
+                </li>
+                {{/new-month}}
+                <li class="timeline-widget-dropdown--list-item" data-slide="{{ @index }}">
+                  <div class="timeline-widget--dot">
+                    <div class="timeline-widget--dot--date">
+                      {{ date-day }}
+                    </div>
+                  </div>
+                  <div class="timeline-widget-dropdown--item">
+                    {{ short-desc }}
+                  </div>
+                </li>
+                {{/timeline-items}}
+              </ul>
+            </div>
+          </div>
+        </div><!-- .timeline-widget--controls -->
+
+        <div class="timeline-widget-frames-wrapper">
+          <div class="timeline-widget-frames">
+            <ul class="slidee">
+              {{#timeline-items}}
+              <li class="timeline-widget-item">
+                <div class="timeline-widget-item--header">
+                  <div class="timeline-widget-item--headline">
+                    <div class="timeline-widget-item--category">Ocha <div class="arrow"></div></div> <div class="timeline-widget-item--date">{{ date-full }}</div>
+                  </div>
+                  <h1 class="timeline-widget-item--title">{{ title }}</h1>
+                </div>
+                <div class="timeline-widget-item--content clearfix">
+                  <div class="timeline-widget-item--image grid--item">
+                    <div class="timeline-widget-item--image--icons">
+                      <a class="timeline-widget-item--image--view-more"><img src="../../images/eye-img.png"></a>
+                      <a class="timeline-widget-item--image--country">{{ country }}</a>
+                    </div>
+                    <img src="{{img-src}}">
+                  </div>
+                  <div class="timeline-widget-item--description grid--item">
+                    {{{long-desc}}}
+                    <div class="timeline-widget-item-link">
+                      <a class="btn" href="{{ url }}"><span class="un-icon-product_type_report"></span> Read full report</a>
+                    </div>
+                  </div>
+                </div>
+              </li>
+              {{/timeline-items}}
+            </ul>
+            <div class="clear-both"></div>
+          </div><!-- .timeline-widget-frames -->
+        </div><!-- .timeline-widget-frames-wrapper -->
+
+        <div class="timeline-widget-pager">
+          <ul class="">
+            {{#timeline-items}}
+            <li>
+              <div class="timeline-widget-pager--item" data-slide="{{ @index }}">
+                <div class="timeline-widget--dot">
+                  <div class="timeline-widget--dot--date">
+                    {{ date-day }}
+                  </div>
+                </div>
+                <div class="timeline-widget-pager--item-content">
+                  {{ short-desc }}
+                </div>
+              </div>
+            </li>
+            {{/timeline-items}}
+          </ul>
+          <div class="clear-both"></div>
+        </div><!-- .timeline-widget-pager -->
+        <div class="timeline-widget-pager--current"></div>
+
+      </div>
+
+    </div>
+  </script>
+</head>
+<body>
+<div id="widget" class="widget"></div>
+<script type="text/javascript">
+  var re = /([^&=]+)=?([^&]*)/g;
+  var decode = function (str) {
+    return decodeURIComponent(str.replace(/\+/g, ' '));
+  };
+  function getQueryParams (query) {
+    // recursive function to construct the result object
+    function createElement(params, key, value) {
+      key = key + '';
+      // if the key is a property
+      if (key.indexOf('.') !== -1) {
+        // extract the first part with the name of the object
+        var list = key.split('.');
+        // the rest of the key
+        var new_key = key.split(/\.(.+)?/)[1];
+        // create the object if it doesnt exist
+        if (!params[list[0]]) params[list[0]] = {};
+        // if the key is not empty, create it in the object
+        if (new_key !== '') {
+          createElement(params[list[0]], new_key, value);
+        } else console.warn('parseParams :: empty property in key "' + key + '"');
+      } else
+      // if the key is an array
+      if (key.indexOf('[') !== -1) {
+        // extract the array name
+        var list = key.split('[');
+        key = list[0];
+        // extract the index of the array
+        var list = list[1].split(']');
+        var index = list[0]
+        // if index is empty, just push the value at the end of the array
+        if (index == '') {
+          if (!params) params = {};
+          if (!params[key] || !Array.isArray(params[key])) params[key] = [];
+          params[key].push(value);
+        } else
+        // add the value at the index (must be an integer)
+        {
+          if (!params) params = {};
+          if (!params[key] || !Array.isArray(params[key])) params[key] = [];
+          params[key][parseInt(index)] = value;
+        }
+      } else
+      // just normal key
+      {
+        if (!params) params = {};
+        params[key] = value;
+      }
+    }
+    // be sure the query is a string
+    query = query + '';
+    if (query === '') query = window.location + '';
+    var params = {}, e;
+    if (query) {
+      // remove # from end of query
+      if (query.indexOf('#') !== -1) {
+        query = query.substr(0, query.indexOf('#'));
+      }
+
+      // remove ? at the begining of the query
+      if (query.indexOf('?') !== -1) {
+        query = query.substr(query.indexOf('?') + 1, query.length);
+      } else return {};
+      // empty parameters
+      if (query == '') return {};
+      // execute a createElement on every key and value
+      while (e = re.exec(query)) {
+        var key = decode(e[1]);
+        var value = decode(e[2]);
+        createElement(params, key, value);
+      }
+    }
+    return params;
+  }
+
+  var params = getQueryParams(window.location);
+  var widget = ReliefwebWidgets.widget('timeline', {
+    template: '#timeline-template',
+    url: params.url,
+    countries: params.country
+  });
+  widget.render('#widget');
+</script>
+<!-- Typekit -->
+<script src="//use.typekit.net/pqs1mrp.js"></script>
+<script>try{Typekit.load();}catch(e){}</script>
+</body>
+</html>
