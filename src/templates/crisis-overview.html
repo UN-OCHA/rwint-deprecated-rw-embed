@@ -50,7 +50,7 @@
     </script>
   </head>
   <body>
-    <div id="widget" class="widget"></div>
+    <div id="widget" class="widget" style="overflow: hidden;"></div>
     <script type="text/javascript">
       function getQueryParams(qs) {
         qs = qs.split("+").join(" ");
@@ -73,6 +73,7 @@
         configFile: params.config
       });
       widget.render('#widget');
+      var pymChild = new pym.Child({ polling: 500 });
     </script>
     <!-- Typekit -->
     <script src="//use.typekit.net/pqs1mrp.js"></script>
