@@ -59,7 +59,7 @@ module.exports = {
             oembed: {
                 type: 'rich',
                 html: function(options, request) {
-                    return require('../util/common').iframe(request, options.height, options.width);
+                    return require('../util/common').iframe(request, options.height, options.width, 'crisis-overview');
                 },
                 title: function(options, request) {
                     return W.title('crisis-overview');
@@ -98,7 +98,7 @@ module.exports = {
             oembed: {
                 type: 'rich',
                 html: function(options, request) {
-                    return require('../util/common').iframe(request, options.height, options.width);
+                    return require('../util/common').iframe(request, options.height, options.width, 'timeline');
                 },
                 title: function(options, request) {
                     return W.title('timeline');
