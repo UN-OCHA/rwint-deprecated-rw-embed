@@ -10,7 +10,6 @@ module.exports = {
 
         var hypermedia = require('./hypermedia')('http://' + request.info.host);
         var url = hypermedia.uri(request.params.type, '/v0/widgets', query);
-        console.log(url);
         return '<iframe src="' + url + '" width="' + width + '" height="' + height + '"></iframe>';
     }
 };

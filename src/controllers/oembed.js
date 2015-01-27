@@ -52,5 +52,84 @@ module.exports = {
         app: {
             name: 'widget'
         }
+    },
+    overview: {
+        description: 'Generate the oembed response for the crisis overview.',
+        handler: {
+            oembed: {
+                type: 'rich',
+                html: function(options, request) {
+                    return require('../util/common').iframe(request, options.height, options.width);
+                },
+                title: function(options, request) {
+                    return W.title('crisis-overview');
+                },
+                provider_name: 'ReliefWeb',
+                provider_url: 'http://reliefweb.int'
+            }
+        },
+        validate: {
+            query: {
+                url: Joi.required(),
+                maxwidth: Joi.number().integer().min(1).default(600),
+                maxheight: Joi.number().integer().min(1).default(600),
+                // Apparently no way to blanket allow parameters.
+                limit: Joi.optional(),
+                offset: Joi.optional(),
+                preset: Joi.optional(),
+                profile: Joi.optional(),
+                filters: Joi.optional(),
+                facets: Joi.optional(),
+                query: Joi.optional(),
+                sort: Joi.optional(),
+                fields: Joi.optional()
+            },
+            params: {
+                type: Joi.valid(W.registry)
+            }
+        },
+        app: {
+            name: 'overview'
+        }
+    },
+    timeline: {
+        description: 'Generate the oembed response for the requested timeline widget.',
+        handler: {
+            oembed: {
+                type: 'rich',
+                html: function(options, request) {
+                    return require('../util/common').iframe(request, options.height, options.width);
+                },
+                title: function(options, request) {
+                    return W.title('timeline');
+                },
+                provider_name: 'ReliefWeb',
+                provider_url: 'http://reliefweb.int'
+            }
+        },
+        validate: {
+            query: {
+                url: Joi.required(),
+                maxwidth: Joi.number().integer().min(1).default(600),
+                maxheight: Joi.number().integer().min(1).default(600),
+                // Apparently no way to blanket allow parameters.
+                limit: Joi.optional(),
+                offset: Joi.optional(),
+                preset: Joi.optional(),
+                profile: Joi.optional(),
+                filters: Joi.optional(),
+                facets: Joi.optional(),
+                query: Joi.optional(),
+                sort: Joi.optional(),
+                fields: Joi.optional()
+            },
+            params: {
+                type: Joi.valid(W.registry)
+            }
+        },
+        app: {
+            name: 'timeline'
+        }
     }
+
 };

@@ -52,9 +52,9 @@ exports.handler = function (route, options) {
           html: Joi.when('type', { is: Joi.valid('video', 'rich'), then: Joi.required() })
       }).unknown(true));
 
-      var format = settings.format === 'json' ? 'application/json+oembed' : 'text/xml+oembed';
+      var format = settings.format === 'json' ? 'application/json' : 'text/xml';
 
-      return reply(exports.response(settings, request)).type(format);
+      return reply(exports.response(settings, request)).type(format).etag(false);
     };
 
     return handler;
