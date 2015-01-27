@@ -16,11 +16,11 @@ module.exports = {
                         href: hypermedia.uri('/v0/oembed')
                     },
                     iframe: {
-                        title: "iFrame Widgets",
+                        title: 'iFrame Widgets',
                         href: hypermedia.uri('/v0/iframe')
                     },
                     widgets: {
-                        title: "HTML Widgets",
+                        title: 'HTML Widgets',
                         href: hypermedia.uri('/v0/widgets')
                     }
                 }
@@ -45,11 +45,11 @@ module.exports = {
                         href: hypermedia.uri('/v0/oembed')
                     },
                     iframe: {
-                        title: "iFrame Widgets",
+                        title: 'iFrame Widgets',
                         href: hypermedia.uri('/v0/iframe')
                     },
                     widgets: {
-                        title: "HTML Widgets",
+                        title: 'HTML Widgets',
                         href: hypermedia.uri('/v0/widgets')
                     }
                 }
