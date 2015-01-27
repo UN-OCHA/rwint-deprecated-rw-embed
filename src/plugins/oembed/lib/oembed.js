@@ -54,7 +54,7 @@ exports.handler = function (route, options) {
 
       var format = settings.format === 'json' ? 'application/json' : 'text/xml';
 
-      return reply(exports.response(settings, request)).type(format).etag(false);
+      return reply(exports.response(settings, request)).type(format);
     };
 
     return handler;
