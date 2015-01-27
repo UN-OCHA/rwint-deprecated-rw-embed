@@ -69,7 +69,7 @@
                 <div class="timeline-widget-item--content clearfix">
                   <div class="timeline-widget-item--image grid--item">
                     <div class="timeline-widget-item--image--icons">
-                      <a class="timeline-widget-item--image--view-more"><img src="../../images/eye-img.png"></a>
+                      <a class="timeline-widget-item--image--view-more"><img src="../../images/eye-img--yellow.png"></a>
                       <a class="timeline-widget-item--image--country">{{ country }}</a>
                     </div>
                     <img src="{{img-src}}">
@@ -195,7 +195,7 @@
   var widget = ReliefwebWidgets.widget('timeline', {
     template: '#timeline-template',
     url: params.url,
-    countries: params.country
+    configFile: params.config
   });
   widget.render('#widget');
 </script>
