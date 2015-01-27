@@ -55,6 +55,7 @@ module.exports = {
     },
     overview: {
         description: 'Generate the oembed response for the crisis overview.',
+/*
         handler: {
             oembed: {
                 type: 'rich',
@@ -67,6 +68,17 @@ module.exports = {
                 provider_name: 'ReliefWeb',
                 provider_url: 'http://reliefweb.int'
             }
+        },
+        */
+        handler: function(request, reply) {
+            var json = {
+                type: 'rich',
+                title: W.title('crisis-overview'),
+                provider_name: 'ReliefWeb',
+                provider_url: 'http://reliefweb.int',
+                html: require('../util/common').iframe(request, '100%', '100%', 'crisis-overview')
+            };
+            reply(json);
         },
         validate: {
             query: {
@@ -94,6 +106,7 @@ module.exports = {
     },
     timeline: {
         description: 'Generate the oembed response for the requested timeline widget.',
+        /*
         handler: {
             oembed: {
                 type: 'rich',
@@ -106,6 +119,17 @@ module.exports = {
                 provider_name: 'ReliefWeb',
                 provider_url: 'http://reliefweb.int'
             }
+        },
+        */
+        handler: function(request, reply) {
+            var json = {
+                type: 'rich',
+                title: W.title('timeline'),
+                provider_name: 'ReliefWeb',
+                provider_url: 'http://reliefweb.int',
+                html: require('../util/common').iframe(request, '100%', '100%', 'timeline')
+            };
+            reply(json);
         },
         validate: {
             query: {
