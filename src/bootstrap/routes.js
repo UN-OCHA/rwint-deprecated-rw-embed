@@ -48,6 +48,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/v0/oembed/financial',
+        config: controller.oembed.financial
+    },
+    {
+        method: 'GET',
+        path: '/v0/oembed/river',
+        config: controller.oembed.river
+    },
+    {
+        method: 'GET',
         path: '/v0/widgets',
         config: controller.widgets.list
     },
