@@ -7,10 +7,10 @@ internals.schema = Joi.object({
     version: Joi.default('1.0'),
     type: Joi.valid('photo', 'video', 'link', 'rich'),
     title: Joi.alternatives(Joi.string(), Joi.func()),
+    html: Joi.alternatives(Joi.string(), Joi.func()),
     format: Joi.valid('json', 'xml').default('json'),
     height: Joi.number().min(0),
     width: Joi.number().min(0),
-    html: Joi.alternatives(Joi.string(), Joi.func()),
     url: Joi.when('type', {
         is: 'photo',
         then: Joi.required(),
@@ -23,16 +23,24 @@ internals.schema = Joi.object({
     cache_age: Joi.number(),
     thumbnail_url: Joi.string(),
     thumbnail_width: Joi.number(),
-    thmbnail_height: Joi.number()
+    thumbnail_height: Joi.number()
 });
 
+internals.content = Joi.object({
+    title: Joi.alternatives(Joi.string(), Joi.func()),
+    html: Joi.alternatives(Joi.string(), Joi.func())
+  }, {allowUnknown: true}
+);
+
 exports.handler = function (route, options) {
+    Joi.assert(options, internals.schema, 'Invalid oEmbed handler options (' + route.path + ')');
+    var settings = Joi.validate(options, internals.schema).value;
 
     var handler = function(request, reply) {
-      // When Joi validation is covered in the base handler scope it holds onto
-      // the settings object across requests.
-      Joi.assert(options, internals.schema, 'Invalid oEmbed handler options (' + route.path + ')');
-      var settings = Joi.validate(options, internals.schema).value;
+      Joi.assert(options, internals.schema, 'Invalid oEmbed handler content (' + route.path + ')');
+      var content = Joi.validate(options, internals.schema).value;
+      settings.title = content.title;
+      settings.html = content.html;
 
       if (settings.height === undefined) {
           settings.height = request.query.maxheight;
