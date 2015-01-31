@@ -10,9 +10,7 @@ module.exports = {
             var json = W.listWidgets('http://' + request.info.host, request.url.href);
             reply(json).type('application/hal+json');
         },
-        app: {
-            name: 'list'
-        }
+        id: 'list-widget'
     },
     widget: {
         description: 'Relay the core widget content from reliefweb-widgets.js',
@@ -28,6 +26,7 @@ module.exports = {
             params: {
               type: Joi.valid(W.registry)
             }
-        }
+        },
+        id: 'widget'
     }
 };

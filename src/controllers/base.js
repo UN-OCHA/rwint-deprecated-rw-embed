@@ -27,9 +27,7 @@ module.exports = {
             };
             reply(json).type('application/hal+json');
         },
-        app: {
-            name: 'index'
-        }
+        id: 'index'
     },
     v0: {
         description: 'General version 0 root resource.',
@@ -56,17 +54,13 @@ module.exports = {
             };
             reply(json).type('application/hal+json');
         },
-        app: {
-            name: 'v0'
-        }
+        id: 'v0'
     },
     missing: {
         description: '404/Not Found response',
         handler: function(request, reply){
             reply('404').code(404);
         },
-        app: {
-            name: '404'
-        }
+        id: '404'
     }
 };

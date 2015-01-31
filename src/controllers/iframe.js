@@ -10,9 +10,7 @@ module.exports = {
             var json = W.listWidgets('http://' + request.info.host, request.url.href);
             reply(json).type('application/hal+json');
         },
-        app: {
-            name: 'list'
-        }
+        id: 'list-iframe'
     },
     widget: {
         description: 'Generate the iframe response for the requested widget type.',
@@ -38,8 +36,6 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        app: {
-            name: 'widget'
-        }
+        id: 'iframe'
     }
 };

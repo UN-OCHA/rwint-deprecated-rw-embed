@@ -9,18 +9,14 @@ module.exports = {
                 path: 'node_modules/rw-widgets/bower_components'
             }
         },
-        app: {
-            name: 'bower'
-        }
+        id: 'bower'
     },
     widgetLibrary: {
         description: 'rw-widgets.js library',
         handler: {
             file: 'node_modules/rw-widgets/dist/reliefweb-widgets.js'
         },
-        app: {
-            name: 'widgetLibrary'
-        }
+        id: 'widgetLibrary'
     },
     style: {
         description: 'rw-widgets.js styles',
@@ -29,9 +25,7 @@ module.exports = {
                 path: 'node_modules/rw-widgets/example/css'
             }
         },
-        app: {
-            name: 'widgetStyles'
-        }
+        id: 'widgetStyles'
     },
     image: {
         description: 'rw-widgets.js images',
@@ -40,11 +34,8 @@ module.exports = {
                 path: 'node_modules/rw-widgets/example/images'
             }
         },
-        app: {
-            name: 'widgetImages'
-        }
-    }
-,
+        id: 'widgetImages'
+    },
     font: {
         description: 'rw-widgets.js fonts',
         handler: {
@@ -52,8 +43,6 @@ module.exports = {
                 path: 'node_modules/rw-widgets/example/fonts'
             }
         },
-        app: {
-            name: 'widgetFonts'
-        }
+        id: 'widgetFonts'
     }
 };

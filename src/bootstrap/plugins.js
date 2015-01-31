@@ -17,22 +17,20 @@ var goodOptions = {
     }]
 };
 
-server.pack.register([
+server.register([
     {
-        plugin: require('good'),
+        register: require('good'),
         options: goodOptions
     },
     {
-        plugin: require('hapi-named-routes')
+        register: require('hapi-named-routes')
     },
     {
-        plugin: require('blipp')
-    },
-    {
-        plugin: require('../plugins/oembed')
+        register: require('../plugins/oembed')
     }
 ], function(err) {
     if (err) {
+        console.error('Failed to load a plugin:', err);
         throw err;
     }
 });

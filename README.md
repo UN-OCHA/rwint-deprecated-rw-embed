@@ -15,7 +15,8 @@ ReliefWeb content in a variety of visualizations.
 There are several configuration values for this system, all injected via
 environment variables.
 
-* **port:** APP_PORT
+* **port:** APP_PORT (default: `3000`)
+* **host:** APP_HOST (default: `0.0.0.0`)
 
 ## Start the Service
 

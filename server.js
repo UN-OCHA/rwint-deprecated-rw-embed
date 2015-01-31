@@ -1,18 +1,18 @@
 'use strict';
 
 var Hapi = require('hapi')
-  , config = require('./src/bootstrap/settings')
-  ;
+    , config = require('./src/bootstrap/settings')
+    ;
 
-var server = Hapi.createServer('0.0.0.0', config.port, { cors: true });
-
-// Setup the views engine and folder
-server.views({
-    engines: {
-        html: require('swig')
-    },
-    path: './server/views'
-});
+var server = new Hapi.Server(
+    {
+        connections: {
+            routes: {cors: true},
+            router: {stripTrailingSlash: true}
+        }
+    }
+);
+server.connection({host: config.host, port: config.port});
 
 // Export the server to be required elsewhere.
 module.exports = server;

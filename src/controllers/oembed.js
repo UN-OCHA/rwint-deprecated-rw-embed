@@ -10,9 +10,7 @@ module.exports = {
             var json = W.listWidgets('http://' + request.info.host, request.url.href);
             reply(json).type('application/hal+json');
         },
-        app: {
-            name: 'list'
-        }
+        id: 'list-oembed'
     },
     widget: {
         description: 'Generate the oembed response for the requested widget type.',
@@ -49,9 +47,7 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        app: {
-            name: 'widget'
-        }
+        id: 'widget'
     },
     overview: {
         description: 'Generate the oembed response for the crisis overview.',
@@ -100,9 +96,7 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        app: {
-            name: 'overview'
-        }
+        id: 'overview'
     },
     timeline: {
         description: 'Generate the oembed response for the requested timeline widget.',
@@ -151,9 +145,7 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        app: {
-            name: 'timeline'
-        }
+        id: 'timeline'
     },
     financial: {
         description: 'Generate the oembed response for the requested financial widget.',
@@ -202,9 +194,7 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        app: {
-            name: 'financial'
-        }
+        id: 'financial'
     },
     river: {
         description: 'Generate the oembed response for the requested river widget.',
@@ -253,9 +243,7 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        app: {
-            name: 'river'
-        }
+        id: 'river'
     }
 
 };
