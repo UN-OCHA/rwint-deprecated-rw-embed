@@ -29,32 +29,10 @@ module.exports = [
         path: '/v0/oembed',
         config: controller.oembed.list
     },
-    /*
     {
         method: 'GET',
         path: '/v0/oembed/{type}',
         config: controller.oembed.widget
-    },
-    */
-    {
-        method: 'GET',
-        path: '/v0/oembed/crisis-overview',
-        config: controller.oembed.overview
-    },
-    {
-        method: 'GET',
-        path: '/v0/oembed/timeline',
-        config: controller.oembed.timeline
-    },
-    {
-        method: 'GET',
-        path: '/v0/oembed/financial',
-        config: controller.oembed.financial
-    },
-    {
-        method: 'GET',
-        path: '/v0/oembed/river',
-        config: controller.oembed.river
     },
     {
         method: 'GET',

@@ -27,10 +27,13 @@ internals.schema = Joi.object({
 });
 
 exports.handler = function (route, options) {
-    Joi.assert(options, internals.schema, 'Invalid oEmbed handler options (' + route.path + ')');
-    var settings = Joi.validate(options, internals.schema).value;
 
     var handler = function(request, reply) {
+      // When Joi validation is covered in the base handler scope it holds onto
+      // the settings object across requests.
+      Joi.assert(options, internals.schema, 'Invalid oEmbed handler options (' + route.path + ')');
+      var settings = Joi.validate(options, internals.schema).value;
+
       if (settings.height === undefined) {
           settings.height = request.query.maxheight;
       }

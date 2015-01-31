@@ -8,6 +8,6 @@
   "main": "index.js",
   "private": true,
   "peerDependencies": {
-    "hapi": ">= 7.5.2"
+    "hapi": "8.x.x"
   }
 }
