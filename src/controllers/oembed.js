@@ -10,7 +10,10 @@ module.exports = {
             var json = W.listWidgets('http://' + request.info.host, request.url.href);
             reply(json).type('application/hal+json');
         },
-        id: 'list-oembed'
+        id: 'list-oembed',
+        tags: ['api', 'oembed'],
+        notes: 'Identify all oembed types made available via the ReliefWeb Widgets library.'
+
     },
     widget: {
         description: 'Generate the oembed response for the requested widget type.',
@@ -47,6 +50,9 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        id: 'oembed'
+        id: 'oembed',
+        tags: ['api', 'oembed'],
+        notes: 'Request the oEmbed payload to be embedded by an oEmbed client..'
+
     }
 };

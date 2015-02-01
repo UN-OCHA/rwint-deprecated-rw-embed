@@ -10,7 +10,9 @@ module.exports = {
             var json = W.listWidgets('http://' + request.info.host, request.url.href);
             reply(json).type('application/hal+json');
         },
-        id: 'list-widget'
+        id: 'list-widget',
+        tags: ['api', 'widget'],
+        notes: 'These widgets are listed based on the rw-widget library, but they will not work if the widget template isn\'t added to rw-embed.'
     },
     widget: {
         description: 'Relay the core widget content from reliefweb-widgets.js',
@@ -27,6 +29,8 @@ module.exports = {
               type: Joi.valid(W.registry)
             }
         },
-        id: 'widget'
+        id: 'widget',
+        tags: ['api', 'widget'],
+        notes: 'Complete HTML document to be rended client-side by the rw-widget library.'
     }
 };

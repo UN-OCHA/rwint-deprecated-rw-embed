@@ -17,6 +17,17 @@ var goodOptions = {
     }]
 };
 
+var pkg = require('../../package');
+var swaggerOptions = {
+    basePath: server.info.uri,
+    apiVersion: pkg.version,
+    documentationPath: '/docs/interactive',
+    info: {
+        title: 'ReliefWeb Embed API',
+        description: pkg.description,
+    }
+}
+
 server.register([
     {
         register: require('good'),
@@ -27,6 +38,10 @@ server.register([
     },
     {
         register: require('hapi-oembed-provider')
+    },
+    {
+        register: require('hapi-swagger'),
+        options: swaggerOptions
     }
 ], function(err) {
     if (err) {

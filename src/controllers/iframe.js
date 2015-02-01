@@ -10,7 +10,9 @@ module.exports = {
             var json = W.listWidgets('http://' + request.info.host, request.url.href);
             reply(json).type('application/hal+json');
         },
-        id: 'list-iframe'
+        id: 'list-iframe',
+        tags: ['api', 'iframe'],
+        notes: 'Identify all widgets made available via the ReliefWeb Widgets library.'
     },
     widget: {
         description: 'Generate the iframe response for the requested widget type.',
@@ -36,6 +38,8 @@ module.exports = {
                 type: Joi.valid(W.registry)
             }
         },
-        id: 'iframe'
+        id: 'iframe',
+        tags: ['api', 'iframe'],
+        notes: 'Request the iFrame content for a specific widget as might be included in an oEmbed payload.'
     }
 };

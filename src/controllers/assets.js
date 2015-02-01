@@ -44,5 +44,16 @@ module.exports = {
             }
         },
         id: 'widgetFonts'
+    },
+    swagger: {
+        description: 'rw-widgets.js fonts',
+        handler: {
+            directory: {
+                path: 'node_modules/hapi-swagger/public/swaggerui',
+                listing: false,
+                index: true
+            }
+        },
+        id: 'swagger'
     }
 };

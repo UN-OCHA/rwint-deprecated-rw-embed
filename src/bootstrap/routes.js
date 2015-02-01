@@ -71,6 +71,11 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/docs/interactive/{path*}',
+        config: controller.assets.swagger
+    },
+    {
+        method: 'GET',
         path: '/',
         config: controller.base.index
     },
