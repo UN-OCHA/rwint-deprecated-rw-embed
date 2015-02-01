@@ -26,7 +26,7 @@ server.register([
         register: require('hapi-named-routes')
     },
     {
-        register: require('../plugins/oembed')
+        register: require('hapi-oembed-provider')
     }
 ], function(err) {
     if (err) {

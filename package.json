@@ -1,6 +1,6 @@
 {
   "name": "rw-embed",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "ReliefWeb embedding service featuring oEmbed.",
   "engines": {
     "node": "0.10.x"
@@ -40,6 +40,7 @@
     "good-file": "^4.0.2",
     "hapi": "^8.1.0",
     "hapi-named-routes": "^0.3.0",
+    "hapi-oembed-provider": "^0.1.0",
     "joi": "^5.1.0",
     "nodemon": "^1.3.5",
     "reliefweb-widgets": "git+ssh://git@github.com:reliefweb/rw-widget.js.git",
