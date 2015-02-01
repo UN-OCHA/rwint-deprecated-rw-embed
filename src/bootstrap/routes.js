@@ -11,41 +11,6 @@ var controller = requireDirectory(module, '../controllers');
 module.exports = [
     {
         method: 'GET',
-        path: '/v0',
-        config: controller.base.v0
-    },
-    {
-        method: 'GET',
-        path: '/v0/iframe',
-        config: controller.iframe.list
-    },
-    {
-        method: 'GET',
-        path: '/v0/iframe/{type}',
-        config: controller.iframe.widget
-    },
-    {
-        method: 'GET',
-        path: '/v0/oembed',
-        config: controller.oembed.list
-    },
-    {
-        method: 'GET',
-        path: '/v0/oembed/{type}',
-        config: controller.oembed.widget
-    },
-    {
-        method: 'GET',
-        path: '/v0/widgets',
-        config: controller.widgets.list
-    },
-    {
-        method: 'GET',
-        path: '/v0/widgets/{type}',
-        config: controller.widgets.widget
-    },
-    {
-        method: 'GET',
         path: '/bower_components/{path*}',
         config: controller.assets.bower
     },

@@ -1,7 +1,7 @@
 'use strict';
 
 var Joi = require('joi'),
-    W = require('../util/registry');
+    W = require('../../../../util/registry');
 
 module.exports = {
     list: {
@@ -11,7 +11,7 @@ module.exports = {
             reply(json).type('application/hal+json');
         },
         id: 'list-widget',
-        tags: ['api', 'widget'],
+        tags: [ 'api', 'widget' ],
         notes: 'These widgets are listed based on the rw-widget library, but they will not work if the widget template isn\'t added to rw-embed.'
     },
     widget: {
@@ -30,7 +30,7 @@ module.exports = {
             }
         },
         id: 'widget',
-        tags: ['api', 'widget'],
+        tags: [ 'api', 'widget' ],
         notes: 'Complete HTML document to be rended client-side by the rw-widget library.'
     }
 };

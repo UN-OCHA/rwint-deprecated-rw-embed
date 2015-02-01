@@ -19,14 +19,16 @@ var goodOptions = {
 
 var pkg = require('../../package');
 var swaggerOptions = {
-    basePath: server.info.uri,
     apiVersion: pkg.version,
+    authorizations: false,
+    basePath: server.info.uri,
     documentationPath: '/docs/interactive',
+    endpoint: '/docs/swagger',
     info: {
         title: 'ReliefWeb Embed API',
-        description: pkg.description,
+        description: pkg.description
     }
-}
+};
 
 server.register([
     {
@@ -42,6 +44,16 @@ server.register([
     {
         register: require('hapi-swagger'),
         options: swaggerOptions
+    },
+    {
+        register: require('../plugins/embed'),
+        options: {
+            // This is a custom version of options.routes.prefix
+            // Multiple plugin registration does not support this,
+            // and trying single registration seemed to mean the second
+            // call to server.register was skipped.
+            prefix: '/v0'
+        }
     }
 ], function(err) {
     if (err) {

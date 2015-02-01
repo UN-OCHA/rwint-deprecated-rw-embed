@@ -1,7 +1,8 @@
 'use strict';
 
 var Joi = require('joi'),
-    W = require('../util/registry');
+    W = require('../../../../util/registry'),
+    common = require('../../../../util/common');
 
 module.exports = {
     list: {
@@ -11,7 +12,7 @@ module.exports = {
             reply(json).type('application/hal+json');
         },
         id: 'list-oembed',
-        tags: ['api', 'oembed'],
+        tags: [ 'api', 'oembed' ],
         notes: 'Identify all oembed types made available via the ReliefWeb Widgets library.'
 
     },
@@ -21,7 +22,7 @@ module.exports = {
             oembed: {
                 type: 'rich',
                 html: function(options, request) {
-                    return require('../util/common').iframe(request, options.height, options.width);
+                    return common.iframe(request, options.height, options.width);
                 },
                 title: function(options, request) {
                     return W.title(request.params.type);
@@ -51,7 +52,7 @@ module.exports = {
             }
         },
         id: 'oembed',
-        tags: ['api', 'oembed'],
+        tags: [ 'api', 'oembed' ],
         notes: 'Request the oEmbed payload to be embedded by an oEmbed client..'
 
     }

@@ -1,12 +1,14 @@
 'use strict';
 
+var Util = require('../util/common');
+
 // This is the base controller. Used for base routes, such as the default index/root path, 404 error pages, and others.
 module.exports = {
     bower: {
         description: 'Frontend library assets.',
         handler: {
             directory: {
-                path: 'node_modules/rw-widgets/bower_components'
+                path: Util.modulePath('rw-widgets', '/bower_components')
             }
         },
         id: 'bower'
@@ -14,7 +16,7 @@ module.exports = {
     widgetLibrary: {
         description: 'rw-widgets.js library',
         handler: {
-            file: 'node_modules/rw-widgets/dist/reliefweb-widgets.js'
+            file: Util.modulePath('rw-widgets', '/dist/reliefweb-widgets.js')
         },
         id: 'widgetLibrary'
     },
@@ -22,7 +24,7 @@ module.exports = {
         description: 'rw-widgets.js styles',
         handler: {
             directory: {
-                path: 'node_modules/rw-widgets/example/css'
+                path: Util.modulePath('rw-widgets', '/example/css')
             }
         },
         id: 'widgetStyles'
@@ -31,7 +33,7 @@ module.exports = {
         description: 'rw-widgets.js images',
         handler: {
             directory: {
-                path: 'node_modules/rw-widgets/example/images'
+                path: Util.modulePath('rw-widgets', '/example/images')
             }
         },
         id: 'widgetImages'
@@ -40,7 +42,7 @@ module.exports = {
         description: 'rw-widgets.js fonts',
         handler: {
             directory: {
-                path: 'node_modules/rw-widgets/example/fonts'
+                path: Util.modulePath('rw-widgets', '/example/fonts')
             }
         },
         id: 'widgetFonts'
@@ -49,7 +51,7 @@ module.exports = {
         description: 'rw-widgets.js fonts',
         handler: {
             directory: {
-                path: 'node_modules/hapi-swagger/public/swaggerui',
+                path: Util.modulePath('hapi-swagger', '/public/swaggerui'),
                 listing: false,
                 index: true
             }
