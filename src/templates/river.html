@@ -8,42 +8,6 @@
   <!-- endbower -->
   <!-- widget assets -->
   <link rel="stylesheet" href="/css/styles.css" />
-  <script id="river-template" type="text/x-handlebars-template">
-    <div class="widget-river">
-      <header class="widget-river--header">
-        <h1 class="widget-river--title">I want content from</h1>
-        <select>
-          <option value="weeks" >This week</option>
-          <option value="months">This month</option>
-          <option value="years">This year</option>
-        </select>
-      </header>
-      <div class="widget-river--results clearfix">
-        <div class="widget-river--results--graph">
-          <ul class="widget-river--results-tabs clearfix">
-            {{#content}}
-            <li class="widget-river--results--item">
-              <span class="widget-river--results--number">{{count}}</span>
-
-              <div class="widget-river--results--type">
-                <span class="{{icon}}"></span>
-                {{title}}
-              </div>
-            </li>
-            {{/content}}
-          </ul>
-          <div class="placeholder">
-            <p class="graph--heading"></p>
-            <svg id="chart"></svg>
-          </div>
-        </div>
-        <div class="widget-river--filters">
-          <h5 class="widget-river--filters--title">Filter Results:  <span class="tab">Reports</span> <span class="close"></span></h5>
-          <ul></ul>
-        </div>
-      </div>
-    </div>
-  </script>
 </head>
 <body>
 <div id="widget" class="widget"></div>
@@ -123,8 +87,8 @@
   }
 
   var params = getQueryParams(window.location);
-  var widget = ReliefwebWidgets.widget('river', {
-    template: '#river-template',
+  var widget = BeatBlocks.widget('river', {
+    template: Handlebars.templates['river.hbs'],
     url: params.url,
     configFile: params.config
   });
