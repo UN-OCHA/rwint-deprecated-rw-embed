@@ -28,6 +28,11 @@ module.exports = {
             };
             reply(json).type('application/hal+json');
         },
-        id: 'v0'
+        id: 'v0',
+        cache: {
+            // 1 hour
+            expiresIn: 3600000,
+            privacy: 'public'
+        }
     }
 };

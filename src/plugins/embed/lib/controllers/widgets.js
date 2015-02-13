@@ -12,7 +12,12 @@ module.exports = {
         },
         id: 'list-widget',
         tags: [ 'api', 'widget' ],
-        notes: 'These widgets are listed based on the rw-widget library, but they will not work if the widget template isn\'t added to rw-embed.'
+        notes: 'These widgets are listed based on the rw-widget library, but they will not work if the widget template isn\'t added to rw-embed.',
+        cache: {
+            // 1 hour
+            expiresIn: 3600000,
+            privacy: 'public'
+        }
     },
     widget: {
         description: 'Relay the core widget content from reliefweb-widgets.js',
@@ -31,6 +36,11 @@ module.exports = {
         },
         id: 'widget',
         tags: [ 'api', 'widget' ],
-        notes: 'Complete HTML document to be rended client-side by the rw-widget library.'
+        notes: 'Complete HTML document to be rended client-side by the rw-widget library.',
+        cache: {
+            // 5 seconds
+            expiresIn: 5000,
+            privacy: 'public'
+        }
     }
 };
