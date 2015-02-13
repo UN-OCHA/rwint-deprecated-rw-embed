@@ -1,6 +1,6 @@
 {
   "name": "rw-embed",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "ReliefWeb embedding service featuring oEmbed.",
   "engines": {
     "node": "0.10.x"

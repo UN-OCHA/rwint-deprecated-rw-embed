@@ -33,7 +33,7 @@ module.exports = {
         },
         validate: {
             query: {
-                url: Joi.required(),
+                url: Joi.string().required(),
                 maxwidth: Joi.number().integer().min(1).default(600),
                 maxheight: Joi.number().integer().min(1).default(600),
                 // Apparently no way to blanket allow parameters.
