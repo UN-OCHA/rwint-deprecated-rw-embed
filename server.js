@@ -7,8 +7,17 @@ var Hapi = require('hapi')
 var server = new Hapi.Server(
     {
         connections: {
-            routes: {cors: true},
-            router: {stripTrailingSlash: true}
+            routes: {
+              cache: {
+                // 7 days
+                expiresIn: 604800000,
+                privacy: 'public'
+              },
+              cors: true
+            },
+            router: {
+              stripTrailingSlash: true
+            }
         }
     }
 );

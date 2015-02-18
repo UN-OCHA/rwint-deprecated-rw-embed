@@ -2,9 +2,6 @@
 
 cd /var/www/html
 
-echo "==> Installing nodemon"
-npm install nodemon -g
-
 echo "==> Installing bower"
 npm install bower -g
 

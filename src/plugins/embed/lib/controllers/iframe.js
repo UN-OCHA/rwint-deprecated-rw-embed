@@ -13,7 +13,12 @@ module.exports = {
         },
         id: 'list-iframe',
         tags: [ 'api', 'iframe' ],
-        notes: 'Identify all widgets made available via the ReliefWeb Widgets library.'
+        notes: 'Identify all widgets made available via the ReliefWeb Widgets library.',
+        cache: {
+            // 1 hour
+            expiresIn: 3600000,
+            privacy: 'public'
+        }
     },
     widget: {
         description: 'Generate the iframe response for the requested widget type.',
@@ -42,6 +47,11 @@ module.exports = {
         },
         id: 'iframe',
         tags: [ 'api', 'iframe' ],
-        notes: 'Request the iFrame content for a specific widget as might be included in an oEmbed payload.'
+        notes: 'Request the iFrame content for a specific widget as might be included in an oEmbed payload.',
+        cache: {
+            // 5 seconds
+            expiresIn: 5000,
+            privacy: 'public'
+        }
     }
 };

@@ -13,8 +13,12 @@ module.exports = {
         },
         id: 'list-oembed',
         tags: [ 'api', 'oembed' ],
-        notes: 'Identify all oembed types made available via the ReliefWeb Widgets library.'
-
+        notes: 'Identify all oembed types made available via the ReliefWeb Widgets library.',
+        cache: {
+            // 1 hour
+            expiresIn: 3600000,
+            privacy: 'public'
+        }
     },
     widget: {
         description: 'Generate the oembed response for the requested widget type.',
@@ -33,7 +37,7 @@ module.exports = {
         },
         validate: {
             query: {
-                url: Joi.required(),
+                url: Joi.string().required(),
                 maxwidth: Joi.number().integer().min(1).default(600),
                 maxheight: Joi.number().integer().min(1).default(600),
                 // Apparently no way to blanket allow parameters.
@@ -53,7 +57,11 @@ module.exports = {
         },
         id: 'oembed',
         tags: [ 'api', 'oembed' ],
-        notes: 'Request the oEmbed payload to be embedded by an oEmbed client..'
-
+        notes: 'Request the oEmbed payload to be embedded by an oEmbed client.',
+        cache: {
+            // 5 seconds
+            expiresIn: 5000,
+            privacy: 'public'
+        }
     }
 };
