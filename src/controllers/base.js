@@ -21,7 +21,12 @@ module.exports = {
             };
             reply(json).type('application/hal+json');
         },
-        id: 'index'
+        id: 'index',
+        cache: {
+            // 1 hour
+            expiresIn: 3600000,
+            privacy: 'public'
+        }
     },
     missing: {
         description: '404/Not Found response',
