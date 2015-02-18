@@ -16,7 +16,7 @@ module.exports = {
     widgetLibrary: {
         description: 'rw-widgets.js library',
         handler: {
-            file: Util.modulePath('rw-widgets', '/dist/reliefweb-widgets.js')
+            file: Util.modulePath('rw-widgets', '/dist/rw-widgets.js')
         },
         id: 'widgetLibrary'
     },

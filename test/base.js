@@ -43,10 +43,10 @@ describe('Assets', function() {
             done();
         });
     });
-    it('can load the reliefweb-widgets.js library', function(done) {
+    it('can load the rw-widgets.js library', function(done) {
         var options = {
             method: "GET",
-            url: "/dist/reliefweb-widgets.js"
+            url: "/dist/rw-widgets.js"
         };
         Server.inject(options, function(response) {
             expect(response.statusCode).to.equal(200);
