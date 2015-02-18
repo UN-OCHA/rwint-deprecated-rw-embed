@@ -31,7 +31,7 @@ module.exports = [
     },
     {
         method: 'GET',
-        path: '/dist/reliefweb-widgets.js',
+        path: '/dist/rw-widgets.js',
         config: controller.assets.widgetLibrary
     },
     {
