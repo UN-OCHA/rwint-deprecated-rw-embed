@@ -44,7 +44,7 @@
     "hapi-swagger": "^0.6.2",
     "joi": "^5.1.0",
     "nodemon": "^1.3.5",
-    "reliefweb-widgets": "git+ssh://git@github.com:reliefweb/rw-widget.js.git",
+    "rw-widgets": "git+ssh://git@github.com:reliefweb/rw-widget.js.git",
     "require-directory": "^2.0.0"
   }
 }
