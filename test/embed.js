@@ -87,7 +87,7 @@ describe('Embed plugin', function() {
         it('requires a url parameter', function(done) {
             var options = {
                 method: "GET",
-                url: "/v0/oembed/image"
+                url: "/v0/oembed/river"
             };
             Server.inject(options, function(response) {
                 expect(response.statusCode).to.equal(400);
@@ -97,7 +97,7 @@ describe('Embed plugin', function() {
         it('sets a default maxheight and maxwidth', function(done) {
             var options = {
                 method: "GET",
-                url: "/v0/oembed/image?url=placeholder"
+                url: "/v0/oembed/river?url=placeholder"
             };
             Server.inject(options, function(response) {
                 expect(response.result.height).to.equal(600);

@@ -1,7 +1,7 @@
 'use strict';
 
-var rw = require('rw-widgets/src/reliefweb-widgets');
-var rwRegistry = rw.listWidgets();
+//var rw = require('rw-widgets/src/reliefweb-widgets');
+var rwRegistry = [ 'crisis-overview', 'river', 'timeline', 'financial' ];
 
 module.exports = {
     listWidgets: function(baseUrl, path) {

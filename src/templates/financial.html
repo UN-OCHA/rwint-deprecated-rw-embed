@@ -21,31 +21,6 @@
       stroke: #CCC;
     }
   </style>
-  <script id="financial-template" type="text/x-handlebars-template">
-    <div class="financial-widget">
-      <!--<h1 class="financial-widget--title"><i class="un-icon-activity_financing"></i> Financial</h1>-->
-      <div class="financial-widget--data-source-chooser">
-        {{#dataSources}}
-        <a href="" class="financial-widget--data-source">{{ dataItemTitle }}</a>
-        {{/dataSources}}
-      </div>
-      <div class="financial-widget--time">
-        <h1>{{ dataItemTitleCurrent }}</h1>
-        <select class="financial-widget--time-select" name="time-chooser" id="">
-        </select>
-      </div>
-      <div class="financial-widget--percent-funded">
-        <div class="financial-widget--percent-funded--amount covered ">$2.12B Funded <span class="percent">57% <span>covered</span></span></div>
-        <div class="financial-widget--percent-funded--amount requested ">$3.74B Requested</div>
-      </div>
-      <div class="financial-widget--cluster-funding">
-        <h2>Requirements &amp; Funding Per Cluster</h2>
-        <div id="finance-bubbles"></div>
-      </div>
-      <footer class="financial-widget--explore"><a href="{{ fundingDocumentURL }}" target="_top">Explore Funding Documents via ReliefWeb</a></footer>
-      <footer class="financial-widget--sources">Data Source <cite><a href="{{ dataSourceURL }}" target="_top">Financial Tracking Service</a></cite></footer>
-    </div>
-  </script>
 </head>
 <body>
 <div id="widget" class="widget"></div>
@@ -126,8 +101,8 @@
   }
 
   var params = getQueryParams(window.location);
-  var widget = ReliefwebWidgets.widget('financial', {
-    template: '#financial-template',
+  var widget = BeatBlocks.widget('financial', {
+    template: Handlebars.templates['financial.hbs'],
     url: params.url,
     configFile: params.config,
     dataSources: [
