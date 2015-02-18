@@ -6,6 +6,7 @@ ReliefWeb content in a variety of visualizations.
 ## Installation
 
 * Install node.
+* `npm install bower grunt-cli -g`
 * `git clone https://github.com/reliefweb/rw-embed.git`
 * `npm install`
 * `grunt`
