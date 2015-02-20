@@ -6,6 +6,6 @@ embed:
   ports:
     - "3000:3000"
   volumes:
-    - /code/rw-embed/nodejs/root/opt/:/opt/
+    - /code/rw-embed/container/root/opt/:/opt/
     - /code/rw-embed:/var/www/html
   hostname: embed.vm

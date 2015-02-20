@@ -7,6 +7,6 @@ embed:
     - "3000:3000"
 #  command: /var/www/html/nodejs/root/opt/node.sh
   volumes:
-    - ./nodejs/root/opt:/opt
+    - ./container/root/opt:/opt
     - .:/var/www/html
   hostname: embed.vm
