@@ -9,7 +9,7 @@ module.exports = {
             var json = {
                 title: 'ReliefWeb Embed API v0',
                 _links: {
-                    self: { href: hypermedia.root }
+                    self: { href: hypermedia.root + '/v0' }
                 },
                 data: {
                     oembed: {
