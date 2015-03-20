@@ -9,15 +9,17 @@ module.exports = {
             var json = {
                 title: 'ReliefWeb Embed API',
                 _links: {
-                    self: { href: hypermedia.root }
+                    self: { href: hypermedia.root },
+                    reliefweb: { href: 'http://api.rwlabs.org' }
                 },
                 data: {
                     v0: {
                         title: 'ReliefWeb Embed API v0',
                         href: hypermedia.uri('/v0'),
-                        status: 'supported'
+                        status: 'experimental'
                     }
-                }
+                },
+                build: require('../../package.json').version
             };
             reply(json).type('application/hal+json');
         },
