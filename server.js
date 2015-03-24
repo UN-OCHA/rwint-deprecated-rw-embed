@@ -13,7 +13,9 @@ var server = new Hapi.Server(
                 expiresIn: 604800000,
                 privacy: 'public'
               },
-              cors: true
+              cors: {
+                additionalHeaders: [ 'If-Modified-Since' ]
+              }
             },
             router: {
               stripTrailingSlash: true
