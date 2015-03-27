@@ -6,14 +6,10 @@ var server = require(settings.rootPath + '/server');
 
 // Options to pass into the 'Good' plugin
 var goodOptions = {
-    opsInterval: 1000,
+    opsInterval: 5000,
     reporters: [{
         reporter: require('good-console'),
-        args: [{ log: '*', request: '*', error: '*' }]
-    },
-    {
-        reporter: require('good-file'),
-        args: [ './rw-embed.log', { log: '*', request: '*', ops: '*', error: '*' }]
+        args: [{ response: '*', log: '*', error: '*' }]
     }]
 };
 
