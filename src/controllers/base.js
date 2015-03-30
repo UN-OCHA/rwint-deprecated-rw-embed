@@ -15,11 +15,17 @@ module.exports = {
                 data: {
                     v0: {
                         title: 'ReliefWeb Embed API v0',
-                        href: hypermedia.uri('/v0'),
+                        href: hypermedia.uri('/v0/docs'),
                         status: 'experimental'
                     }
                 },
-                build: require('../../package.json').version
+                docs: {
+                  swagger: hypermedia.link('docs/interactive')
+                },
+                version: {
+                  build: require('../../package.json').version,
+                  widgetLibrary: require('../../node_modules/rw-widgets/package.json').version 
+                }
             };
             reply(json).type('application/hal+json');
         },
