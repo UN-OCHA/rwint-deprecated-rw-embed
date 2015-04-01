@@ -8,8 +8,9 @@ var server = require(settings.rootPath + '/server');
 var goodOptions = {
     opsInterval: 5000,
     reporters: [{
-        reporter: require('good-console'),
-        args: [{ response: '*', log: '*', error: '*' }]
+        reporter: require('good-console-json'),
+        // Explicit format override sets timestamps to ISO 8601.
+        args: [{ response: '*', log: '*', error: '*' }, { format: '' } ]
     }]
 };
 
