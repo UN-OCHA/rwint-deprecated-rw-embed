@@ -13,6 +13,7 @@
   "keywords": [
     "widget",
     "oembed",
+    "embed",
     "reliefweb"
   ],
   "author": "ReliefWeb",
@@ -37,7 +38,7 @@
   "dependencies": {
     "boom": "^2.6.1",
     "good": "^5.1.1",
-    "good-console": "^4.1.0",
+    "good-console-json": "git://github.com/grayside/good-console-json",
     "good-file": "^4.0.2",
     "hapi": "^8.1.0",
     "hapi-named-routes": "^0.3.0",
@@ -45,7 +46,7 @@
     "hapi-swagger": "^0.6.2",
     "joi": "^5.1.0",
     "pm2": "^0.12.0",
-    "rw-widgets": "^0.2.2",
-    "require-directory": "^2.0.0"
+    "require-directory": "^2.0.0",
+    "rw-widgets": "^0.2.2"
   }
 }
