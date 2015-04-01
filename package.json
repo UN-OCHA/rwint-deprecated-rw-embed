@@ -7,7 +7,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node_modules/.bin/nodemon server.js",
+    "start": "node_modules/.bin/pm2 start server.js --name 'rwembed' -i 4 -e /var/log/rw-embed/err.log -o /var/log/rw-embed/out.log --merge-logs --watch --ignore-watch=\".git container logs node_modules\" --no-daemon",
     "postinstall": "cd node_modules/rw-widgets && bower install --production --allow-root && cd -"
   },
   "keywords": [
@@ -32,6 +32,7 @@
     "grunt-wiredep": "^2.0.0",
     "lab": "^5.1.0",
     "load-grunt-tasks": "^2.0.0",
+    "nodemon": "^1.3.5",
     "time-grunt": "^1.0.0"
   },
   "dependencies": {
@@ -44,7 +45,7 @@
     "hapi-oembed-provider": "^0.1.0",
     "hapi-swagger": "^0.6.2",
     "joi": "^5.1.0",
-    "nodemon": "^1.3.5",
+    "pm2": "^0.12.0",
     "require-directory": "^2.0.0",
     "rw-widgets": "^0.2.2"
   }
