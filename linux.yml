@@ -1,12 +1,11 @@
 embed:
-  image: unocha/nodejs
+  image: unocha/nginx16-nodejs
   environment:
     DNSDOCK_NAME: embed
     DNSDOCK_IMAGE: embed
-  ports:
-    - "3000:3000"
 #  command: /var/www/html/nodejs/root/opt/node.sh
   volumes:
-    - ./env/dev/opt:/opt
-    - .:/var/www/html
+    - ./env/dev/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
+    - ./env/dev/opt/app/node.sh:/opt/app/node.sh
+    - ./data/.npm:/root/.npm
   hostname: embed.vm
