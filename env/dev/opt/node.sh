@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd $NODE_APP_DIR
+cd /var/www/html
 
 echo "==> Installing bower"
 npm install bower -g
