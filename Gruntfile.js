@@ -56,12 +56,7 @@ module.exports = function (grunt) {
                 src: "dist/widgets/*.html",
                 cwd: "node_modules/rw-widgets",
                 ignorePath: /.*node_modules\/rw-widgets/,
-                includeSelf: true,
-                overrides: {
-                  'rw-google-analytics': {
-                    main: 'custom/assets/rw-ga.js'
-                  }
-                }
+                includeSelf: true
             }
         }
     });
