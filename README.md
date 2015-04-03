@@ -19,6 +19,8 @@ environment variables.
 * **port:** APP_PORT (default: `3000`)
 * **host:** APP_HOST (default: `0.0.0.0`)
 
+Host is required for Swagger, it can otherwise be skipped.
+
 ## Start the Service
 
 * `npm start`
