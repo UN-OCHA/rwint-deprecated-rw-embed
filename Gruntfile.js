@@ -1,6 +1,9 @@
 "use strict";
 
 module.exports = function (grunt) {
+    // Path to Widget Library.
+    var library = require('./src/util/common').modulePath('rw-widgets', '/')
+
     require('time-grunt')(grunt);
 
     // Load plugins
@@ -14,7 +17,7 @@ module.exports = function (grunt) {
         mkdir: {
            init: {
              options: {
-               create: [ 'dist', 'dist/widgets' ]
+               create: [ 'dist' ]
              }
            }
         },
@@ -25,7 +28,7 @@ module.exports = function (grunt) {
                 expand: true,
                 cwd: 'src/templates',
                 src: ['**'],
-                dest: 'dist/widgets'
+                dest: 'dist'
               }
             ]
           }
@@ -53,18 +56,59 @@ module.exports = function (grunt) {
         },
         wiredep: {
             build: {
-                src: "dist/widgets/*.html",
+                src: "dist/*.html",
                 cwd: "node_modules/rw-widgets",
                 ignorePath: /.*node_modules\/rw-widgets/,
                 includeSelf: true
             }
+        },
+        useminPrepare: {
+            html: 'dist/*.html',
+            options: {
+                dest: 'dist',
+                root: [ library, library + '/example' ]
+            }
+        },
+        usemin: {
+            html: [ 'dist/*.html' ],
+        },
+        cacheBust: {
+            assets: {
+                options: {
+                    rename: false
+                },
+                files: [{
+                    src: ['dist/*.html']
+                }]
+            }
         }
     });
 
-    var version = require('./package.json').version;
-    grunt.config('wiredep.build.fileTypes.html.replace.js', '<script src="{{filePath}}?' + version + '"></script>');
+    grunt.registerTask('compile', [
+      'clean',
+      'mkdir',
+      'copy',
+      'wiredep',
+      'useminPrepare',
+      'concat:generated',
+      'cssmin:generated',
+      'uglify:generated',
+      'usemin',
+      'cacheBust'
+    ]);
 
-    // Register tasks
-    grunt.registerTask("default", [ 'eslint', 'clean', 'mkdir', 'copy', 'wiredep', 'lab' ]);
+    grunt.registerTask('validate', [
+      'eslint'
+    ]);
+
+    grunt.registerTask('test', [
+      'lab'
+    ]);
+
+    grunt.registerTask('default', [
+      'validate',
+      'compile',
+      'test'
+    ]);
 
 };

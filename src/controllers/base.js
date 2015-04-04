@@ -20,11 +20,11 @@ module.exports = {
                     }
                 },
                 docs: {
-                  swagger: hypermedia.link('docs/interactive')
+                    swagger: hypermedia.link('/docs/interactive')
                 },
                 version: {
-                  build: require('../../package.json').version,
-                  widgetLibrary: require('../../node_modules/rw-widgets/package.json').version 
+                    build: require('../../package.json').version,
+                    widgetLibrary: require('../../node_modules/rw-widgets/package.json').version
                 }
             };
             reply(json).type('application/hal+json');

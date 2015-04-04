@@ -16,6 +16,16 @@ module.exports = [
     },
     {
         method: 'GET',
+        path: '/js/embed.js',
+        config: controller.assets.jsAgg
+    },
+    {
+        method: 'GET',
+        path: '/css/embed.css',
+        config: controller.assets.cssAgg
+    },
+    {
+        method: 'GET',
         path: '/css/{path*}',
         config: controller.assets.style
     },
