@@ -58,6 +58,19 @@ module.exports = function (grunt) {
                 ignorePath: /.*node_modules\/rw-widgets/,
                 includeSelf: true
             }
+        },
+        'string-replace': {
+            inline: {
+                files: {
+                    "dist/widgets/": "dist/widgets/*.html"
+                },
+                options: {
+                    replacements: [{
+                        pattern: 'GATOKEN',
+                        replacement: process.env.GATOKEN
+                    }]
+                }
+            }
         }
     });
 
@@ -65,6 +78,6 @@ module.exports = function (grunt) {
     grunt.config('wiredep.build.fileTypes.html.replace.js', '<script src="{{filePath}}?' + version + '"></script>');
 
     // Register tasks
-    grunt.registerTask("default", [ 'eslint', 'clean', 'mkdir', 'copy', 'wiredep', 'lab' ]);
+    grunt.registerTask("default", [ 'eslint', 'clean', 'mkdir', 'copy', 'wiredep', 'string-replace', 'lab' ]);
 
 };
