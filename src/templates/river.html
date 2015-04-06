@@ -118,7 +118,7 @@
       ga('send', 'event', category, type, label);
     }
     function getInnerText(element) {
-      return element ? (element.textContent || element.innerText || '').replace(/^\s+|\s+$/) : '';
+      return element ? (element.textContent || element.innerText || '').replace(/^\s+|\s+$/, '') : '';
     }
     function isSourceLink(element) {
       var parent = element.parentNode;
