@@ -16,14 +16,14 @@ module.exports = {
     jsAgg: {
         description: 'Aggregated JS assets.',
         handler: {
-            file: 'dist/js/app.js'
+            file: 'dist/js/embed.js'
         },
         id: 'jsAgg'
     },
     cssAgg: {
         description: 'Aggregated CSS assets.',
         handler: {
-            file: 'dist/css/app.css'
+            file: 'dist/css/embed.css'
         },
         id: 'cssAgg'
     },
