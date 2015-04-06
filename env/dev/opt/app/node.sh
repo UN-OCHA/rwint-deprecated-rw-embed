@@ -2,8 +2,6 @@
 
 cd /var/www/html
 
-export APP_HOST=embed.vm
-
 echo "==> Installing bower"
 npm install bower -g
 
