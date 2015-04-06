@@ -1,12 +1,12 @@
 embed:
-  image: unocha/nodejs
+  image: unocha/nginx16-nodejs
   environment:
     DNSDOCK_NAME: embed
     DNSDOCK_IMAGE: embed
-  ports:
-    - "3000:3000"
   volumes:
-    - /code/rw-embed/container/root/opt/:/opt/
+    - /code/rw-embed/env/dev/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
+    - /code/rw-embed/env/dev/opt/app/node.sh:/opt/app/node.sh
     - /code/rw-embed/logs:/var/log/rw-embed
     - /code/rw-embed:/var/www/html
+    - /data/rw-crisis/.npm:/root/.npm
   hostname: embed.vm
