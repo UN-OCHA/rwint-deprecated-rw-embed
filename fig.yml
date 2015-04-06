@@ -4,6 +4,7 @@ embed:
     DNSDOCK_NAME: embed
     DNSDOCK_IMAGE: embed
   volumes:
+    - /code/rw-embed/env/dev/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
     - /code/rw-embed/env/dev/opt/app/node.sh:/opt/app/node.sh
     - /code/rw-embed/logs:/var/log/rw-embed
     - /code/rw-embed:/var/www/html
