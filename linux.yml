@@ -3,9 +3,18 @@ embed:
   environment:
     DNSDOCK_NAME: embed
     DNSDOCK_IMAGE: embed
-#  command: /var/www/html/nodejs/root/opt/node.sh
   volumes:
     - ./env/dev/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
     - ./env/dev/opt/app/node.sh:/opt/app/node.sh
+    - ./logs:/var/log/rw-embed
+    - .:/var/www/html
     - ./data/.npm:/root/.npm
-  hostname: embed.vm
+  hostname: embed.embed.vm
+varnish:
+  image: unocha/varnish
+  environment:
+    DNSDOCK_NAME: cache
+    DNSDOCK_IMAGE: embed
+  volumes:
+    - ./env/dev/etc/varnish/:/etc/varnish/
+  hostname: cache.embed.vm
