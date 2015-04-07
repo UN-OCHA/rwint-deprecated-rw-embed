@@ -1,0 +1,2 @@
+nginx: exec /usr/sbin/nginx -g 'daemon off;'
+node: exec /opt/app/node.sh
