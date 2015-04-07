@@ -31,8 +31,10 @@ module.exports = {
                 title: function(options, request) {
                     return W.title(request.params.type);
                 },
+                /* eslint-disable */
                 provider_name: 'ReliefWeb',
                 provider_url: 'http://reliefweb.int'
+                /* eslint-enable */
             }
         },
         validate: {

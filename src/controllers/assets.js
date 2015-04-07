@@ -13,6 +13,20 @@ module.exports = {
         },
         id: 'bower'
     },
+    jsAgg: {
+        description: 'Aggregated JS assets.',
+        handler: {
+            file: 'dist/js/embed.js'
+        },
+        id: 'jsAgg'
+    },
+    cssAgg: {
+        description: 'Aggregated CSS assets.',
+        handler: {
+            file: 'dist/css/embed.css'
+        },
+        id: 'cssAgg'
+    },
     widgetLibrary: {
         description: 'rw-widgets.js library',
         handler: {

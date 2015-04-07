@@ -10,7 +10,7 @@ var goodOptions = {
     reporters: [{
         reporter: require('good-console-json'),
         // Explicit format override sets timestamps to ISO 8601.
-        args: [{ response: '*', log: '*', error: '*' }, { format: '' } ]
+        args: [{ response: '*', log: '*', error: '*' }, { format: '' }]
     }]
 };
 
