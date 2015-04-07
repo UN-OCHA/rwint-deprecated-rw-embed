@@ -62,6 +62,19 @@ module.exports = function (grunt) {
                 includeSelf: true
             }
         },
+        'string-replace': {
+            inline: {
+                files: {
+                    "dist/": "dist/*.html"
+                },
+                options: {
+                    replacements: [{
+                        pattern: "('GATOKEN')",
+                        replacement: "('" + (process.env.GATOKEN || '') + "')"
+                    }]
+                }
+            }
+        },
         useminPrepare: {
             html: 'dist/*.html',
             options: {
@@ -89,6 +102,7 @@ module.exports = function (grunt) {
       'mkdir',
       'copy',
       'wiredep',
+      'string-replace',
       'useminPrepare',
       'concat:generated',
       'cssmin:generated',
@@ -110,5 +124,4 @@ module.exports = function (grunt) {
       'compile',
       'test'
     ]);
-
 };

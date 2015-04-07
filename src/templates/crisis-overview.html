@@ -42,5 +42,54 @@
     <!-- Typekit -->
     <script src="//use.typekit.net/hny7ecg.js"></script>
     <script>try{Typekit.load();}catch(e){}</script>
+    <!-- Analytics -->
+    <script>
+      (function (token) {
+        if (token && token !== 'GATOKEN') {
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', token, 'auto');
+          ga('send', 'pageview');
+
+          // Helpers.
+          function track(category, type, label) {
+            ga('send', 'event', category, type, label);
+          }
+          function getInnerText(element) {
+            return element ? (element.textContent || element.innerText || '').replace(/^\s+|\s+$/, '') : '';
+          }
+          function isSourceLink(element) {
+            var parent = element.parentNode;
+            parent = parent.tagName === 'CITE' ? parent.parentNode : parent;
+            return parent.className.indexOf('widget--sources') !== -1 ||
+                   getInnerText(parent).indexOf('(Source: ') === 0;
+          }
+          function getInputLabel(element) {
+            var sibling = element.nextElementSibling;
+            return sibling && sibling.tagName === 'LABEL' ? getInnerText(sibling) : '';
+          }
+
+          // Event tracking.
+          var widget = document.getElementById('widget');
+          widget.addEventListener('click', function (event) {
+            var target = event.target;
+            if (target.tagName === 'INPUT') {
+              if (target.type === 'checkbox') {
+                track('Crisis Overview - Description', 'click', getInputLabel(target));
+              }
+              else if (target.type === 'radio') {
+                track('Crisis Overview - Figures', 'click', getInputLabel(target));
+              }
+            }
+            else if (target.tagName === 'A' && isSourceLink(target)) {
+              track('Crisis Overview - Source', 'click', getInnerText(target));
+            }
+          });
+        }
+      })('GATOKEN');
+    </script>
   </body>
 </html>

@@ -33,6 +33,7 @@
     "grunt-eslint": "^2.1.0",
     "grunt-lab": "^2.1.2",
     "grunt-mkdir": "^0.1.2",
+    "grunt-string-replace": "^1.0.0",
     "grunt-usemin": "^3.0.0",
     "grunt-wiredep": "^2.0.0",
     "lab": "^5.1.0",
