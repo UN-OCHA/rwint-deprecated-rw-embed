@@ -8,5 +8,13 @@ embed:
     - /code/rw-embed/env/dev/opt/app/node.sh:/opt/app/node.sh
     - /code/rw-embed/logs:/var/log/rw-embed
     - /code/rw-embed:/var/www/html
-    - /data/rw-crisis/.npm:/root/.npm
-  hostname: embed.vm
+    - /data/rw-embed/.npm:/root/.npm
+  hostname: embed.embed.vm
+varnish:
+  image: unocha/varnish
+  environment:
+    DNSDOCK_NAME: cache
+    DNSDOCK_IMAGE: embed
+  volumes:
+    - /code/rw-embed/env/dev/etc/varnish/:/etc/varnish/
+  hostname: cache.embed.vm
