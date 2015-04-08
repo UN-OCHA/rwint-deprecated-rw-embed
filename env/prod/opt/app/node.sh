@@ -20,5 +20,9 @@ bower --version
 echo "==> Build embed assets and run tests"
 grunt
 
-echo "==> Starting the server"
-exec npm start
+if [ ! $@ == "--build-only" ]
+  then
+  echo "==> Starting the server"
+  exec npm start
+fi
+
