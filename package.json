@@ -7,7 +7,7 @@
   },
   "main": "server.js",
   "scripts": {
-    "start": "node_modules/.bin/pm2 start server.js --name 'rwembed' -i 4 -e /var/log/rw-embed/err.log -o /var/log/rw-embed/out.log --merge-logs --watch --ignore-watch=\".git container logs node_modules\" --no-daemon",
+    "start": "node_modules/.bin/pm2 start server.js --name 'rwembed' -e /var/log/rw-embed/err.log -o /var/log/rw-embed/out.log --merge-logs --watch --ignore-watch=\".git container logs node_modules\" --no-daemon",
     "postinstall": "cd node_modules/rw-widgets && bower install --production --allow-root && cd -"
   },
   "keywords": [
