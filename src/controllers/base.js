@@ -20,7 +20,7 @@ module.exports = {
                     }
                 },
                 docs: {
-                    swagger: hypermedia.link('/docs/interactive')
+                    swagger: hypermedia.link('/docs/swagger?path=v0')
                 },
                 version: {
                     build: require('../../package.json').version,
