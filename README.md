@@ -1,6 +1,6 @@
 # ReliefWeb Embed Service
 
-This is a Node.js and [Hapi.js](http://hapijs.org) based webservice that
+This is a Node.js and [Hapi.js](http://hapijs.com) based webservice that
 provides clean, reusable web widgets based on the public [rw-widget.js](http://github.com/reliefweb/rw-widget.js) library.
 
 ## Installation
