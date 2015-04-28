@@ -52,6 +52,11 @@ Grunt runs some validation and tests, and also assembles the static assets for d
 
     npm start
 
+### Deployment Process
+
+In order to update the version of the widget library in use, be sure to adjust
+package.json accordingly. We prefer more explicit version referencing to help ensure the system deploys with the latest version.
+
 ### Other Operations
 
 For an overview of other available options, run `grunt -h` from inside the project
