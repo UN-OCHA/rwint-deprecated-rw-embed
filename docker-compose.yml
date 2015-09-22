@@ -1,0 +1,12 @@
+embed:
+  image: unocha/nginx16-nodejs
+  environment:
+    DNSDOCK_NAME: embed
+    DNSDOCK_IMAGE: embed
+  volumes:
+    - ./env/dev/etc/nginx/conf.d/localhost.conf:/etc/nginx/conf.d/localhost.conf
+    - ./env/dev/opt/app/node.sh:/opt/app/node.sh
+    - ./logs:/var/log/rw-embed
+    - .:/var/www/html
+    - /data/rw-crisis/.npm:/root/.npm
+  hostname: embed.vm

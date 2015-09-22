@@ -6,7 +6,7 @@ echo "==> Installing bower"
 npm install bower -g
 
 echo "==> Installing npm dependencies"
-npm install --unsafe-perm
+npm install --unsafe-perm --no-bin-links
 
 echo "==> Dependency Versions"
 grunt --version
