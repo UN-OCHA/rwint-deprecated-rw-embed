@@ -21,7 +21,7 @@
   "private": true,
   "devDependencies": {
     "code": "^1.2.1",
-    "eslint": "^0.10.0",
+    "eslint": "^6.8.0",
     "grunt": "^0.4.5",
     "grunt-cache-bust": "^0.4.13",
     "grunt-contrib-clean": "^0.6.0",
