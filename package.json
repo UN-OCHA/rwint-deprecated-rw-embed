@@ -46,7 +46,7 @@
     "good": "^5.1.1",
     "good-console-json": "git://github.com/grayside/good-console-json",
     "good-file": "^4.0.2",
-    "hapi": "^8.1.0",
+    "hapi": "^18.1.0",
     "hapi-named-routes": "^0.3.0",
     "hapi-oembed-provider": "^0.1.0",
     "hapi-swagger": "^0.6.2",
